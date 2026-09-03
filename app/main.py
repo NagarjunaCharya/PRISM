@@ -1,5 +1,5 @@
 """
-SIIH2026 AI Safety Implementation System — Prototype
+PRISM-SIF AI Safety Implementation System — Prototype
 FastAPI backend serving PRISM analytics, SIF detection, and Risk Scoring.
 """
 import os
@@ -32,7 +32,7 @@ from app.api.v1.sif import router as sif_v2_router
 # APP INITIALIZATION
 # =============================================================================
 app = FastAPI(
-    title="SIIH2026 AI Safety System",
+    title="PRISM-SIF AI Safety System",
     description="AI-powered HSE management with PRISM analytics, SIF detection, and risk scoring",
     version="0.1.0-prototype",
 )
@@ -76,7 +76,7 @@ async def startup():
     """Load data and initialize all engines on startup."""
     start = time.time()
     print("\n" + "=" * 70)
-    print("SIIH2026 AI SAFETY SYSTEM — Starting up...")
+    print("PRISM-SIF AI SAFETY SYSTEM — Starting up...")
     print("=" * 70)
 
     # Load cleaned OSHA data
