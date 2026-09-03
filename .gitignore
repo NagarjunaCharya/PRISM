@@ -1,0 +1,99 @@
+# ==========================================
+# SECRETS & CREDENTIALS
+# ==========================================
+.env
+.env.*
+keys/
+*.pem
+*.key
+
+# ==========================================
+# DATA FILES (too large for GitHub)
+# ==========================================
+data/
+*.csv
+*.DAT
+*.txt
+!requirements.txt
+!README.md
+
+# ==========================================
+# ML MODEL WEIGHTS (too large for GitHub)
+# ==========================================
+models/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.h5
+*.onnx
+checkpoint-*/
+
+# ==========================================
+# DATABASES
+# ==========================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# PYTHON
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+venv/
+env/
+.venv/
+
+# ==========================================
+# PYTEST / HYPOTHESIS
+# ==========================================
+.pytest_cache/
+.hypothesis/
+htmlcov/
+.coverage
+.coverage.*
+
+# ==========================================
+# PATCH SCRIPTS (one-off maintenance)
+# ==========================================
+patch_*.py
+js_dump.txt
+pdf_test.txt
+extract_test.py
+
+# ==========================================
+# LOGS
+# ==========================================
+*.log
+
+# ==========================================
+# STITCH SCREENS (generated assets)
+# ==========================================
+stitch_screens/
+
+# ==========================================
+# IDE / OS
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+Thumbs.db
+.DS_Store
+.kiro/
+
+# ==========================================
+# SCRAPER ARTIFACTS
+# ==========================================
+failed_downloads.txt
+download_reports.py
+bsee_alerts_scraper.py

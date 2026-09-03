@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><script>window.onerror = function(msg, url, lineNo, columnNo, error) { var err = document.createElement('div'); err.style.position = 'fixed'; err.style.top = '10px'; err.style.left = '10px'; err.style.background = 'red'; err.style.color = 'white'; err.style.padding = '20px'; err.style.zIndex = '999999'; err.innerHTML = 'JS ERROR: ' + msg + ' at line ' + lineNo; document.body.appendChild(err); return false; };</script><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-surface":"#f1f5f9","on-secondary-fixed-variant":"#5516be","surface-container":"#191f2f","outline-variant":"#424754","on-tertiary-container":"#002f38","surface-container-lowest":"#080e1d","primary-fixed":"#d8e2ff","surface-container-low":"#151b2b","inverse-surface":"#dde2f8","primary":"#adc6ff","on-secondary-container":"#c4abff","on-error":"#690005","surface-container-high":"#242a3a","on-background":"#dde2f8","secondary-fixed-dim":"#d0bcff","surface-dim":"#0d1322","on-primary-container":"#00285d","error":"#ffb4ab","on-tertiary-fixed":"#001f26","surface-container-highest":"#2f3445","on-primary-fixed":"#001a42","on-primary":"#002e6a","error-container":"#93000a","outline":"#8c909f","primary-fixed-dim":"#adc6ff","tertiary-fixed-dim":"#4cd7f6","on-primary-fixed-variant":"#004395","surface":"#0d1322","inverse-primary":"#005ac2","background":"#0d1322","surface-bright":"#33394a","on-secondary-fixed":"#23005c","tertiary":"#4cd7f6","secondary-fixed":"#e9ddff","on-error-container":"#ffdad6","surface-tint":"#adc6ff","secondary-container":"#571bc1","inverse-on-surface":"#2a3040","on-surface-variant":"#c2c6d6","primary-container":"#4d8eff","tertiary-container":"#009eb9","on-tertiary":"#003640","tertiary-fixed":"#acedff","secondary":"#d0bcff","on-tertiary-fixed-variant":"#004e5c","surface-variant":"#2f3445"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"space-xs":"0.25rem","panel-padding":"0.75rem","grid-gutter":"0.5rem","space-xl":"1.25rem","cell-padding-y":"0.25rem","space-xxs":"0.125rem","space-2xl":"1.5rem","cell-padding-x":"0.5rem","space-sm":"0.5rem","space-md":"0.75rem","space-lg":"1rem"},fontFamily:{"body-sm":["Inter"],"body-md":["Inter"],"telemetry-lg":["JetBrains Mono"],"telemetry-sm":["JetBrains Mono"],"label-md":["JetBrains Mono"],"label-sm":["JetBrains Mono"],"telemetry-display":["JetBrains Mono"],"headline-lg":["Inter"],"headline-xl":["Inter"],"headline-md":["Inter"],"telemetry-md":["JetBrains Mono"]},fontSize:{"body-sm":["12px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"400"}],"body-md":["13px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"400"}],"telemetry-lg":["16px",{lineHeight:"20px",letterSpacing:"-0.01em",fontWeight:"600"}],"telemetry-sm":["11px",{lineHeight:"14px",letterSpacing:"0.02em",fontWeight:"500"}],"label-md":["11px",{lineHeight:"14px",letterSpacing:"0.06em",fontWeight:"500"}],"label-sm":["10px",{lineHeight:"12px",letterSpacing:"0.08em",fontWeight:"500"}],"telemetry-display":["28px",{lineHeight:"32px",letterSpacing:"-0.03em",fontWeight:"700"}],"headline-lg":["24px",{lineHeight:"30px",letterSpacing:"-0.015em",fontWeight:"600"}],"headline-xl":["32px",{lineHeight:"38px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["18px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"600"}],"telemetry-md":["13px",{lineHeight:"16px",letterSpacing:"0em",fontWeight:"500"}]}}}}</script><style>
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #111827;
+            --bg-card: rgba(17, 24, 39, 0.8);
+            --bg-glass: rgba(255, 255, 255, 0.04);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --gradient-2: linear-gradient(135deg, #06b6d4, #3b82f6);
+            --gradient-3: linear-gradient(135deg, #ec4899, #8b5cf6);
+            --gradient-4: linear-gradient(135deg, #10b981, #06b6d4);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        .old-body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 14, 26, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header h1 span {
+            font-weight: 400;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            display: block;
+            background: none;
+            -webkit-text-fill-color: var(--text-secondary);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Main layout */
+        .old-main {
+            position: relative;
+            z-index: 1;
+            padding: 1.5rem 2rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Nav Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 0.3rem;
+            margin-bottom: 1.5rem;
+            background: var(--bg-glass);
+            padding: 0.3rem;
+            border-radius: 14px;
+            border: 1px solid var(--border-glass);
+            width: fit-content;
+        }
+
+        .nav-tab {
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            border: none;
+            background: none;
+        }
+
+        .nav-tab:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-tab.active {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Sections */
+        .section { display: none; animation: fadeIn 0.4s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1.3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .kpi-card:nth-child(1)::before { background: var(--gradient-1); }
+        .kpi-card:nth-child(2)::before { background: var(--gradient-3); }
+        .kpi-card:nth-child(3)::before { background: var(--gradient-4); }
+        .kpi-card:nth-child(4)::before { background: linear-gradient(135deg, #ef4444, #f59e0b); }
+        .kpi-card:nth-child(5)::before { background: var(--gradient-2); }
+        .kpi-card:nth-child(6)::before { background: linear-gradient(135deg, #f59e0b, #10b981); }
+
+        .kpi-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .kpi-sub {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        color: var(--text-primary);
+        }
+
+        .card-subtitle {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Grid layouts */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+
+        @media (max-width: 1024px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+        }
+
+        /* SIF Demo */
+        .sif-textarea {
+            width: 100%;
+            min-height: 120px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        .sif-textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 0.8rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+        }
+
+        /* SIF Result */
+        .sif-result {
+            margin-top: 1.2rem;
+            padding: 1.2rem;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-glass);
+            display: none;
+        }
+
+        .sif-result.visible { display: block; animation: fadeIn 0.4s ease; }
+
+        .sif-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .severity-critical { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .severity-high { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .severity-moderate { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .severity-low { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        .sif-categories { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.8rem 0; }
+
+        .category-tag {
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--accent-purple);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .explanation-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            border-left: 3px solid var(--accent-blue);
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Risk Table */
+        .risk-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 0.4rem;
+        }
+
+        .risk-table th {
+            text-align: left;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .risk-table td {
+            padding: 0.7rem 0.8rem;
+            font-size: 0.82rem;
+            color: #f1f5f9;
+            background: rgba(0, 0, 0, 0.15);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .risk-table tr td:first-child { border-radius: 8px 0 0 8px; }
+        .risk-table tr td:last-child { border-radius: 0 8px 8px 0; }
+
+        .risk-table tbody tr {
+            transition: all 0.2s;
+        }
+
+        .risk-table tbody tr:hover td {
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .risk-pill {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .risk-pill.critical { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .risk-pill.high { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .risk-pill.moderate { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .risk-pill.low { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+
+        .score-bar {
+            width: 80px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        /* Loading */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: var(--text-muted);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-glass);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+        .plotly-chart { width: 100%; min-height: 350px; }
+        .chart-sm { min-height: 280px; }
+    </style><script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-[280px] bg-surface-container-lowest/90 backdrop-blur-2xl z-50 flex flex-col justify-between border-r border-outline-variant/30 shadow-[1px_0_24px_rgba(0,0,0,0.6)]"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-md border-b border-outline-variant/20"><img alt="SIIH2026 Shield Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VlF8OM6ZZDNvTaaOK0vveiexca4Nr4CTgxlLkmGzEdIUJgACvK4KlGc59k3fXADhB0vV1VW4EtWxsPQwOLpB8zbypU5cMqFBl_VDC3smZGysFVVSlamtZf87N5gZmRPkGyC1IuHZOHUOIXqi9V1XyWDxuiKsO3tazwiAb4QwBwP1GmlACan0bmBPyHiCQdAyCo7WGT8WhIzJZPhkZKdFvau9-ohDi3CkKws_YEAWD-7U5jqf5n4jUpAZzM"/><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight font-bold text-on-surface leading-none">SIIH2026</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-tertiary">Mission Control</span></div></div><div class="px-space-md py-space-sm"><div class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-space-sm mb-space-xs">Operations Modules</div><nav class="flex flex-col gap-space-xxs" data-active-classes="bg-surface-container-high text-primary border-l-2 border-primary shadow-[inset_4px_0_12px_rgba(77,142,255,0.15)]"><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded transition-colors font-body-md group bg-surface-container-high text-primary border-l-2 border-primary shadow-[inset_4px_0_12px_rgba(77,142,255,0.15)]" data-path="overview" href="#" onclick="showSection('overview'); return false;"><span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary transition-colors">grid_view</span><span>Overview</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md group" data-path="prism-analytics" href="#" onclick="showSection('prism'); return false;"><span class="material-symbols-outlined text-[18px] text-outline group-hover:text-tertiary transition-colors">analytics</span><span>PRISM Analytics</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md group" data-path="sif-detection" href="#" onclick="showSection('sif'); return false;"><span class="material-symbols-outlined text-[18px] text-outline group-hover:text-error transition-colors">warning</span><span>SIF Detection</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md group" data-path="risk-scoring" href="#" onclick="showSection('risk'); return false;"><span class="material-symbols-outlined text-[18px] text-outline group-hover:text-secondary transition-colors">speed</span><span>Risk Scoring</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md group" data-path="incidents-explorer" href="#" onclick="showSection('incidents'); return false;"><span class="material-symbols-outlined text-[18px] text-outline group-hover:text-tertiary transition-colors">biotech</span><span>Incidents Explorer</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md group" data-path="governance-and-ai-ethics" href="#" onclick="showSection('governance'); return false;"><span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary transition-colors">policy</span><span>Governance &amp; AI Ethics</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md group" data-path="model-performance" href="#"><span class="material-symbols-outlined text-[18px] text-outline group-hover:text-tertiary transition-colors">neurology</span><span>Model Performance</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md group" data-path="system-settings" href="#"><span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary transition-colors">tune</span><span>Settings</span></a></nav></div></div><div class="flex flex-col gap-space-xs p-space-md border-t border-outline-variant/20 bg-surface-container-lowest"><div class="flex items-center justify-between px-space-xs py-space-xxs"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">WS Feed Active</span></div><span class="font-telemetry-sm text-telemetry-sm text-tertiary">0.02ms</span></div><div class="flex items-center justify-between bg-surface-container-low/70 p-space-sm rounded border border-outline-variant/20"><div class="flex items-center gap-space-sm"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA452YIiPZM99bu4PmJ2A6FeMZrtksQH2Sc2ellzngiysFQudQEplUoOzvbQ7uOcu1Pr_dvWzGhOvWOZCdDr_vcUcqq1h50Wf51ARNlCnDv4JNeW28Uo1iBBKJqnG9q4nRJrsk8P4bPVJdH4n25eCfKUC1FtExLQWFMKcow8zLiNbalLUGPKNm90POq3cIKw0yjs6jj92EApGWN1Fz_QGHgWj21Z8pbzJ-JtXq40iAVSJyd9kR-Q_jmQ"/><span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-tertiary ring-2 ring-surface-container-low"></span></div><div class="flex flex-col"><span class="font-headline-md text-[12px] leading-tight font-semibold text-on-surface">Dr. Aris Thorne</span><span class="font-label-sm text-label-sm text-secondary tracking-tight">Safety Director</span></div></div><button aria-label="Disconnect Session" class="text-outline hover:text-error transition-colors p-space-xxs flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">power_settings_new</span></button></div></div></aside><div class="pl-[280px]"><header class="fixed top-0 left-[280px] right-0 h-16 bg-surface/85 backdrop-blur-2xl z-40 border-b border-outline-variant/30 px-space-lg flex items-center justify-between shadow-[0_4px_20px_rgba(0,0,0,0.35)]"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-xxs rounded bg-surface-container-high border border-outline-variant/30"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span><span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-semibold">FASTAPI WS CONNECTED</span></div></div><div class="hidden xl:flex items-center gap-space-xs font-telemetry-sm text-telemetry-sm"><span class="px-space-sm py-space-xxs rounded bg-surface-container-low border border-outline-variant/20 text-on-surface-variant flex items-center gap-space-xs"><span class="text-outline">LATENCY</span><span class="text-tertiary font-semibold">14ms</span></span><span class="px-space-sm py-space-xxs rounded bg-surface-container-low border border-outline-variant/20 text-on-surface-variant flex items-center gap-space-xs"><span class="text-outline">DEFCON</span><span class="text-primary font-semibold">READY</span></span><span class="px-space-sm py-space-xxs rounded bg-surface-container-low border border-outline-variant/20 text-on-surface-variant flex items-center gap-space-xs"><span class="text-outline">TELEMETRY</span><span class="text-tertiary font-semibold">OPTIMAL</span></span></div></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-space-sm px-space-md py-space-xs bg-surface-container-low rounded border border-outline-variant/30 text-outline hover:border-outline transition-colors"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-label-sm text-label-sm">SEARCH INTELLIGENCE</span><kbd class="font-telemetry-sm text-label-sm bg-surface-container-highest px-space-xs py-space-xxs rounded text-on-surface-variant">⌘K</kbd></div><div class="flex items-center gap-space-xs"><button aria-label="Toggle Audio Alerts" class="w-9 h-9 flex items-center justify-center rounded bg-surface-container-low hover:bg-surface-container border border-outline-variant/20 text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">volume_up</span></button><button aria-label="Notifications" class="relative w-9 h-9 flex items-center justify-center rounded bg-surface-container-low hover:bg-surface-container border border-outline-variant/20 text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-error-container text-error text-[10px] font-bold flex items-center justify-center border border-error/40">3</span></button></div><div class="h-6 w-px bg-outline-variant/30 mx-space-xs"></div><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA452YIiPZM99bu4PmJ2A6FeMZrtksQH2Sc2ellzngiysFQudQEplUoOzvbQ7uOcu1Pr_dvWzGhOvWOZCdDr_vcUcqq1h50Wf51ARNlCnDv4JNeW28Uo1iBBKJqnG9q4nRJrsk8P4bPVJdH4n25eCfKUC1FtExLQWFMKcow8zLiNbalLUGPKNm90POq3cIKw0yjs6jj92EApGWN1Fz_QGHgWj21Z8pbzJ-JtXq40iAVSJyd9kR-Q_jmQ"/><div class="hidden sm:flex flex-col"><span class="font-headline-md text-[13px] leading-tight font-semibold text-on-surface">Dr. Aris Thorne</span><span class="font-label-sm text-[10px] text-secondary tracking-tight uppercase">Safety Director</span></div></div></div></header><main class="w-full pt-16 bg-background px-space-lg py-space-md">
+<div class="section active" id="section-overview">
+<div class="flex flex-col w-full gap-space-md">
+<!-- Live Telemetry Banner Strip -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm px-space-md py-space-xs rounded-xl bg-surface-container-low/90 shadow-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-tertiary"></span>
+</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-tertiary font-semibold">FASTAPI WS STREAMING</span>
+</div>
+<span class="text-outline-variant font-telemetry-sm text-telemetry-sm">/</span>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<span class="text-outline">NODE:</span>
+<span class="text-on-surface font-semibold">US-GULF-OFFSHORE-04</span>
+</div>
+<span class="hidden md:inline text-outline-variant font-telemetry-sm text-telemetry-sm">/</span>
+<div class="hidden md:flex items-center gap-space-xs text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<span class="text-outline">CYCLE:</span>
+<span class="text-tertiary" id="live-timer">00:04.12s ago</span>
+</div>
+<span class="hidden lg:inline text-outline-variant font-telemetry-sm text-telemetry-sm">/</span>
+<div class="hidden lg:flex items-center gap-space-xs text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<span class="text-outline">PACKETS:</span>
+<span class="text-primary font-semibold">0 DROPPED</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="px-space-xs py-space-xxs rounded bg-surface-container font-label-sm text-label-sm text-outline uppercase tracking-wider">DEFCON ALPHA-2</span>
+<span class="px-space-xs py-space-xxs rounded bg-tertiary-container font-label-sm text-label-sm text-on-tertiary font-bold tracking-wider">PRISM SYNC 99.98%</span>
+</div>
+</div>
+<!-- KPI Cards 6-Column High Density Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-space-sm">
+<!-- Card 1: Total Incidents -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container/85 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md group hover:bg-surface-container-high transition-all">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-secondary to-primary-container"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Total Incidents</span>
+<span class="material-symbols-outlined text-[16px] text-primary">data_loss_prevention</span>
+</div>
+<div class="my-space-xs" id="kpiTotal">
+<div class="font-telemetry-display text-telemetry-display text-on-surface tracking-tight font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" id="kpiTotal">106,259</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm text-outline" id="kpiDateRange">Gross Registry</span>
+<span class="flex items-center font-telemetry-sm text-telemetry-sm text-tertiary font-semibold">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>+2.4%
+        </span>
+</div>
+</div>
+<!-- Card 2: SIF Precursors Found -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container/85 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md group hover:bg-surface-container-high transition-all">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-error via-secondary-container to-error-container"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">SIF Precursors</span>
+<span class="material-symbols-outlined text-[16px] text-error">dangerous</span>
+</div>
+<div class="my-space-xs">
+<div class="font-telemetry-display text-telemetry-display text-on-surface tracking-tight font-bold bg-gradient-to-r from-error via-secondary to-error bg-clip-text text-transparent" id="kpiSIF">11,508</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm text-outline">High Potential</span>
+<span class="flex items-center font-telemetry-sm text-telemetry-sm text-error font-semibold" id="kpiSIFPct">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>+14.2%
+        </span>
+</div>
+</div>
+<!-- Card 3: Avg Risk Score -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container/85 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md group hover:bg-surface-container-high transition-all">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-tertiary via-primary-container to-tertiary-container"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Avg Risk Score</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">speed</span>
+</div>
+<div class="my-space-xs">
+<div class="font-telemetry-display text-telemetry-display text-on-surface tracking-tight font-bold bg-gradient-to-r from-tertiary to-primary bg-clip-text text-transparent" id="kpiAvgRisk">62.4<span class="font-telemetry-sm text-telemetry-sm text-outline font-normal">/100</span></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm text-outline">Fleet Baseline</span>
+<span class="flex items-center font-telemetry-sm text-telemetry-sm text-tertiary font-semibold" id="kpiRiskSub">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>-1.8%
+        </span>
+</div>
+</div>
+<!-- Card 4: Critical Alerts -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container/85 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md group hover:bg-surface-container-high transition-all">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-error to-secondary"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Critical Alerts</span>
+<span class="material-symbols-outlined text-[16px] text-error animate-pulse">crisis_alert</span>
+</div>
+<div class="my-space-xs" id="kpiCritical">
+<div class="font-telemetry-display text-telemetry-display text-on-surface tracking-tight font-bold bg-gradient-to-r from-error to-secondary-fixed bg-clip-text text-transparent" id="kpiCritical">2,618</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm text-outline">Direct Severity</span>
+<span class="flex items-center font-telemetry-sm text-telemetry-sm text-error font-semibold">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>+5.1%
+        </span>
+</div>
+</div>
+<!-- Card 5: Anomalies Detected -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container/85 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md group hover:bg-surface-container-high transition-all">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-secondary-fixed via-secondary to-tertiary"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Anomalies Detected</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">insights</span>
+</div>
+<div class="my-space-xs" id="kpiAnomalies">
+<div class="font-telemetry-display text-telemetry-display text-on-surface tracking-tight font-bold bg-gradient-to-r from-secondary to-tertiary bg-clip-text text-transparent" id="kpiAnomalies">160</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm text-outline">ML Outliers</span>
+<span class="flex items-center font-telemetry-sm text-telemetry-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>+12
+        </span>
+</div>
+</div>
+<!-- Card 6: Hospitalizations -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container/85 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md group hover:bg-surface-container-high transition-all">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-tertiary via-tertiary-container to-primary"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Hospitalizations</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">local_hospital</span>
+</div>
+<div class="my-space-xs" id="kpiHosp">
+<div class="font-telemetry-display text-telemetry-display text-on-surface tracking-tight font-bold bg-gradient-to-r from-tertiary via-primary to-surface-tint bg-clip-text text-transparent" id="kpiHosp">86,104</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm text-outline">Medical Admits</span>
+<span class="flex items-center font-telemetry-sm text-telemetry-sm text-tertiary font-semibold">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>-0.4%
+        </span>
+</div>
+</div>
+</div>
+<!-- Primary Operations Canvas: Main Analytics + Live Telemetry Stream -->
+<div class="grid grid-cols-1 2xl:grid-cols-12 gap-space-md">
+<!-- Left & Central Analytical Charts (9 Cols on 2xl) -->
+<div class="2xl:col-span-9 flex flex-col gap-space-md">
+<!-- Grid 1: Incident Trends & Risk Score Distribution -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Dual Axis Line / Area Chart (7 Cols) -->
+<div class="lg:col-span-7 rounded-xl bg-surface-container/80 backdrop-blur-xl p-space-md flex flex-col shadow-md min-h-[380px]">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Longitudinal Telemetry (2015 - 2025)</span>
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">Monthly Incident &amp; Hospitalization Trajectory</span>
+</div>
+<div class="flex items-center gap-space-sm font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-space-xxs">
+<span class="w-3 h-2 rounded bg-primary"></span>
+<span class="text-on-surface-variant">Incidents</span>
+</div>
+<div class="flex items-center gap-space-xxs">
+<span class="w-3 h-0.5 bg-error border-b border-dashed border-error"></span>
+<span class="text-on-surface-variant">Hospitalizations</span>
+</div>
+</div>
+</div>
+<!-- Interactive Area Chart Container -->
+<div id="overviewTrendChart" style="width:100%; height:100%; min-height:380px;"></div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between bg-surface-container-lowest/60 px-space-md py-space-xs rounded">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Peak Volatility Window: <span class="font-telemetry-sm text-primary">Q3-2024 (1,480 Delta)</span></span>
+<div class="flex items-center gap-space-xs font-telemetry-sm text-telemetry-sm text-tertiary">
+<span class="material-symbols-outlined text-[14px]">auto_graph</span>
+<span>Rolling 120-Day Variance: ±3.1%</span>
+</div>
+</div>
+</div>
+<!-- Risk Score Distribution Histogram (5 Cols) -->
+<div class="lg:col-span-5 rounded-xl bg-surface-container/80 backdrop-blur-xl p-space-md flex flex-col shadow-md min-h-[380px]">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Quantile Density</span>
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">Risk Score Buckets</span>
+</div>
+<span class="px-space-xs py-space-xxs rounded bg-surface-container-high text-outline font-telemetry-sm text-telemetry-sm">10-PT BINS</span>
+</div>
+<!-- Horizontal Bar Density List -->
+<div id="overviewRiskChart" style="width:100%; height:100%; min-height:380px;"></div>
+<div class="mt-space-xs pt-space-xs flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span class="flex items-center gap-space-xxs"><span class="w-2 h-2 rounded-full bg-tertiary"></span>0-30 NOMINAL</span>
+<span class="flex items-center gap-space-xxs"><span class="w-2 h-2 rounded-full bg-primary"></span>31-60 MODERATE</span>
+<span class="flex items-center gap-space-xxs"><span class="w-2 h-2 rounded-full bg-secondary"></span>61-80 HIGH</span>
+<span class="flex items-center gap-space-xxs"><span class="w-2 h-2 rounded-full bg-error"></span>81-100 CRITICAL</span>
+</div>
+</div>
+</div>
+<!-- Grid 2: SIF Precursors Categories (Donut) & Top 10 States (Horizontal Bar) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- SIF Categories Donut Chart (5 Cols) -->
+<div class="lg:col-span-5 rounded-xl bg-surface-container/80 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Classification Vector</span>
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">SIF Precursor Categories</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-tertiary">donut_large</span>
+</div>
+<!-- Donut Graphic + Centered Readout -->
+<div id="overviewSIFChart" style="width:100%; height:100%; min-height:300px;"></div>
+<!-- Legend Matrix -->
+<div class="grid grid-cols-2 gap-space-xs font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center justify-between p-space-xxs rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary-container"></span>
+<span class="text-on-surface-variant font-body-sm text-body-sm truncate">Caught-in/Between</span>
+</div>
+<span class="text-primary font-bold">34%</span>
+</div>
+<div class="flex items-center justify-between p-space-xxs rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-secondary"></span>
+<span class="text-on-surface-variant font-body-sm text-body-sm truncate">Fall Hazard</span>
+</div>
+<span class="text-secondary font-bold">26%</span>
+</div>
+<div class="flex items-center justify-between p-space-xxs rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-tertiary"></span>
+<span class="text-on-surface-variant font-body-sm text-body-sm truncate">Struck-by</span>
+</div>
+<span class="text-tertiary font-bold">18%</span>
+</div>
+<div class="flex items-center justify-between p-space-xxs rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-error"></span>
+<span class="text-on-surface-variant font-body-sm text-body-sm truncate">Energy Release</span>
+</div>
+<span class="text-error font-bold">12%</span>
+</div>
+<div class="col-span-2 flex items-center justify-between p-space-xxs rounded bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-on-secondary-container"></span>
+<span class="text-on-surface-variant font-body-sm text-body-sm truncate">Chemical Exposure</span>
+</div>
+<span class="text-on-secondary-container font-bold">10%</span>
+</div>
+</div>
+</div>
+<!-- Top 10 States Horizontal Bar Chart (7 Cols) -->
+<div class="lg:col-span-7 rounded-xl bg-surface-container/80 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Jurisdiction Distribution</span>
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">Top 10 States by Incident Volume</span>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">AGGREGATED FLEET</span>
+</div>
+<!-- State Bars Grid -->
+<div id="overviewStateChart" style="width:100%; height:100%; min-height:350px;"></div>
+</div>
+</div>
+</div>
+<!-- Right Column: Real-Time Incoming Incident Stream Drawer (3 Cols on 2xl) -->
+<div class="2xl:col-span-3 flex flex-col gap-space-md">
+<!-- Live Incident Ledger Widget -->
+<div class="rounded-xl bg-surface-container/85 backdrop-blur-xl p-space-md flex flex-col h-full shadow-xl">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-space-xs">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+<span class="font-headline-md text-[14px] font-bold text-on-surface tracking-tight">Live Incident Stream</span>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary">FAST-POLL</span>
+</div>
+<!-- Incident Items Feed -->
+<div class="flex-1 flex flex-col gap-space-sm my-space-sm overflow-y-auto pr-space-xxs">
+<!-- Live Item 1: High Priority Alert -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/90 shadow-sm relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary animate-pulse"></div>
+<div class="flex items-center justify-between mb-space-xxs">
+<span class="font-telemetry-sm text-telemetry-sm text-secondary font-bold">RIG DELTA-9</span>
+<span class="px-space-xs py-space-xxs rounded bg-secondary-container font-label-sm text-label-sm text-on-secondary-container font-bold uppercase">High Risk</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">H2S Sensor Trip (Exceedance)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xxs">Sector B-3 gas threshold exceeded 10.4 ppm. Automated perimeter purge triggered.</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xxs border-t border-outline-variant/20 font-telemetry-sm text-telemetry-sm text-outline">
+<span>LAT: 28.414°N</span>
+<span class="text-tertiary">3s ago</span>
+</div>
+</div>
+<!-- Live Item 2: Critical Precursor Incident -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/90 shadow-sm relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-center justify-between mb-space-xxs">
+<span class="font-telemetry-sm text-telemetry-sm text-error font-bold">REFINERY UNIT 4</span>
+<span class="px-space-xs py-space-xxs rounded bg-error-container font-label-sm text-label-sm text-error font-bold uppercase">Critical SIF</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Caught-in-between Near Miss</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xxs">Compressor bay hydraulic arm pinch line entered during active cycle without lockout.</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xxs border-t border-outline-variant/20 font-telemetry-sm text-telemetry-sm text-outline">
+<span>FACILITY #TX-092</span>
+<span class="text-tertiary">42s ago</span>
+</div>
+</div>
+<!-- Live Item 3: Moderate Severity Event -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/90 shadow-sm relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary"></div>
+<div class="flex items-center justify-between mb-space-xxs">
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary font-bold">PIPELINE SECT 12</span>
+<span class="px-space-xs py-space-xxs rounded bg-tertiary-container font-label-sm text-label-sm text-on-tertiary font-bold uppercase">Moderate</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Valve Bleed-off Overpressure</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xxs">Transmitter 88-P logged momentary differential pressure surge of 185 PSI.</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xxs border-t border-outline-variant/20 font-telemetry-sm text-telemetry-sm text-outline">
+<span>ZONE 4 GAUGE</span>
+<span class="text-outline">2m 14s ago</span>
+</div>
+</div>
+<!-- Live Item 4: Low Nominal Log -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/90 shadow-sm relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-center justify-between mb-space-xxs">
+<span class="font-telemetry-sm text-telemetry-sm text-primary font-bold">LOGISTICS TERMINAL 3</span>
+<span class="px-space-xs py-space-xxs rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant font-bold uppercase">Advisory</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Forklift Telemetry Speed Flag</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xxs">Vehicle FL-14 operated above 8 mph in pedestrian boundary sector C.</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xxs border-t border-outline-variant/20 font-telemetry-sm text-telemetry-sm text-outline">
+<span>DOCK BAY 14</span>
+<span class="text-outline">5m 01s ago</span>
+</div>
+</div>
+</div>
+<!-- Emergency Action Trigger & Manual Command -->
+<div class="pt-space-sm border-t border-outline-variant/20 flex flex-col gap-space-xs">
+<button class="w-full py-space-sm rounded bg-primary text-on-primary font-headline-md text-[13px] font-semibold flex items-center justify-center gap-space-xs shadow-md hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined text-[16px]">notifications_active</span>
+<span>Acknowledge All Stream Items</span>
+</button>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline px-space-xxs">
+<span>FILTER: HIGH-POTENTIAL ONLY</span>
+<span class="text-tertiary">ENABLED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro-Interactions Script for Live Telemetry Ticker Counter -->
+<script>
+    (function() {
+      let seconds = 4;
+      let ms = 12;
+      const timerElem = document.getElementById('live-timer');
+      if (!timerElem) return;
+
+      setInterval(function() {
+        ms += 17;
+        if (ms >= 100) {
+          seconds += 1;
+          ms = Math.floor(Math.random() * 20);
+        }
+        if (seconds >= 60) {
+          seconds = 1;
+        }
+        const sStr = seconds < 10 ? '0' + seconds : seconds;
+        const msStr = ms < 10 ? '0' + ms : ms;
+        timerElem.textContent = '00:' + sStr + '.' + msStr + 's ago';
+      }, 250);
+    })();
+  </script>
+</div>
+</div>
+<div class="section hidden" id="section-prism">
+<div class="flex flex-col w-full gap-space-md">
+<!-- Interactive Top Control Sub-Header -->
+<div class="flex flex-wrap items-center justify-between gap-space-md p-space-md rounded-xl bg-surface-container shadow-md">
+<div class="flex items-center gap-space-lg flex-wrap">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary text-[22px]">analytics</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">PRISM Diagnostics Canvas</span>
+<span class="px-space-xs py-space-xxs rounded bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm uppercase tracking-wider font-semibold">Inference Live</span>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">LATENT ISOLATION FOREST • MULTI-VARIATE OUTLIER PIPELINE</span>
+</div>
+</div>
+<!-- Model Switcher Selector -->
+<div class="flex items-center bg-surface-container-lowest rounded-lg p-space-xxs shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-space-xs flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[14px] text-tertiary">memory</span> Model:
+        </span>
+<!-- Custom Styled Dropdown -->
+<div class="relative" id="custom-model-select-wrapper">
+    <button onclick="document.getElementById('custom-model-menu').classList.toggle('hidden')" 
+            onblur="setTimeout(() => { const menu = document.getElementById('custom-model-menu'); if(menu) menu.classList.add('hidden'); }, 200)"
+            class="bg-surface-container-high text-on-surface font-telemetry-sm text-telemetry-sm px-space-sm py-space-xxs rounded cursor-pointer outline-none hover:bg-surface-bright transition-colors w-[320px] flex justify-between items-center relative z-10 border border-outline/10 shadow-sm" id="custom-model-btn" type="button">
+        <span id="custom-model-text" class="truncate pr-2">PRISM-v4.2 Isolation Forest (Default)</span>
+        <span class="material-symbols-outlined text-tertiary text-[16px]">expand_more</span>
+    </button>
+    
+    <div id="custom-model-menu" class="hidden absolute top-full mt-1 right-0 w-[320px] bg-slate-900 border border-slate-700 rounded-lg shadow-2xl overflow-hidden z-[100]">
+        <div class="py-1">
+            <button type="button" class="w-full text-left px-space-md py-space-xs text-white bg-indigo-600 font-telemetry-sm transition-colors cursor-pointer flex items-center justify-between" onclick="updateModel('PRISM-v4.2 Isolation Forest (Default)', this)">
+                <span>PRISM-v4.2 Isolation Forest (Default)</span>
+                <span class="material-symbols-outlined text-[16px]">check</span>
+            </button>
+            <button type="button" class="w-full text-left px-space-md py-space-xs text-slate-300 hover:bg-slate-800 hover:text-white font-telemetry-sm transition-colors cursor-pointer flex items-center justify-between" onclick="updateModel('PRISM-v4.1 Extreme Gradient Outlier', this)">
+                <span>PRISM-v4.1 Extreme Gradient Outlier</span>
+            </button>
+            <button type="button" class="w-full text-left px-space-md py-space-xs text-slate-300 hover:bg-slate-800 hover:text-white font-telemetry-sm transition-colors cursor-pointer flex items-center justify-between" onclick="updateModel('PRISM-v4.0 Ensemble Hybrid [IF+LOF]', this)">
+                <span>PRISM-v4.0 Ensemble Hybrid [IF+LOF]</span>
+            </button>
+            <button type="button" class="w-full text-left px-space-md py-space-xs text-slate-300 hover:bg-slate-800 hover:text-white font-telemetry-sm transition-colors cursor-pointer flex items-center justify-between" onclick="updateModel('PRISM-v5.0-Alpha Variational AE', this)">
+                <span>PRISM-v5.0-Alpha Variational AE</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function updateModel(text, el) {
+        document.getElementById('custom-model-text').innerText = text;
+        const menu = document.getElementById('custom-model-menu');
+        const buttons = menu.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.className = "w-full text-left px-space-md py-space-xs text-slate-300 hover:bg-slate-800 hover:text-white font-telemetry-sm transition-colors cursor-pointer flex items-center justify-between";
+            const check = btn.querySelector('.material-symbols-outlined');
+            if (check) check.remove();
+        });
+        
+        el.className = "w-full text-left px-space-md py-space-xs text-white bg-indigo-600 font-telemetry-sm transition-colors cursor-pointer flex items-center justify-between";
+        const checkIcon = document.createElement('span');
+        checkIcon.className = 'material-symbols-outlined text-[16px]';
+        checkIcon.innerText = 'check';
+        el.appendChild(checkIcon);
+        
+        menu.classList.add('hidden');
+
+        let modelParam = 'v4.2';
+        if (text.includes('v4.1')) modelParam = 'v4.1';
+        if (text.includes('v4.0')) modelParam = 'v4.0';
+        if (text.includes('v5.0')) modelParam = 'v5.0';
+
+        try {
+            const res = await fetchJSON(`/api/v1/prism/anomalies?limit=100&model=${modelParam}`);
+            if (res.anomalies) {
+                const graph = document.getElementById('prismDailyChart');
+                
+                // Get the min date from the existing daily count trace (trace 0)
+                let minDate = '2000-01-01';
+                if (graph.data && graph.data.length > 0 && graph.data[0].x && graph.data[0].x.length > 0) {
+                    minDate = graph.data[0].x[0];
+                }
+                
+                // Filter anomalies to match the chart's visible date range
+                const recentAnomalies = res.anomalies.filter(a => a.date >= minDate);
+                const dates = recentAnomalies.map(a => a.date);
+                const counts = recentAnomalies.map(a => a.count);
+                
+                // Remove existing anomaly trace (assuming it's trace index 3 if it exists)
+                if (graph.data) {
+                    const anomalyTraceIndex = graph.data.findIndex(t => t.name === 'Anomalies');
+                    if (anomalyTraceIndex > -1) {
+                        Plotly.deleteTraces(graph, anomalyTraceIndex);
+                    }
+                }
+                
+                // Add the new anomaly trace
+                Plotly.addTraces('prismDailyChart', {
+                    x: dates, y: counts, type: 'scatter', mode: 'markers',
+                    name: 'Anomalies', marker: { color: '#ef4444', size: 10, symbol: 'diamond',
+                    line: { color: '#ef4444', width: 2 } }
+                });
+            }
+        } catch (e) {
+            console.error('Failed to update PRISM model anomalies', e);
+        }
+    }
+</script>
+</div>
+</div>
+<!-- Time Range Controls & Operational Action -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center bg-surface-container-lowest rounded-lg p-space-xxs shadow-sm" id="time-range-group">
+<button class="px-space-sm py-space-xxs font-label-sm text-label-sm rounded text-outline hover:text-on-surface transition-colors" data-range="24h" type="button">24H</button>
+<button class="px-space-sm py-space-xxs font-label-sm text-label-sm rounded text-outline hover:text-on-surface transition-colors" data-range="7d" type="button">7D</button>
+<button class="px-space-sm py-space-xxs font-label-sm text-label-sm rounded text-outline hover:text-on-surface transition-colors" data-range="30d" type="button">30D</button>
+<button class="px-space-sm py-space-xxs font-label-sm text-label-sm rounded bg-primary-container text-on-primary-container font-semibold shadow-sm" data-range="90d" type="button">90D</button>
+<button class="px-space-sm py-space-xxs font-label-sm text-label-sm rounded text-outline hover:text-on-surface transition-colors" data-range="ytd" type="button">YTD</button>
+<button class="px-space-sm py-space-xxs font-label-sm text-label-sm rounded text-outline hover:text-on-surface transition-colors" data-range="10y" type="button">10-YR</button>
+</div>
+<button class="flex items-center gap-space-xs px-space-md py-space-xxs rounded-lg bg-surface-container-high hover:bg-surface-bright text-primary font-telemetry-sm text-telemetry-sm transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Contamination (0.02)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-xxs rounded-lg bg-primary hover:bg-primary-fixed text-on-primary font-telemetry-sm text-telemetry-sm transition-colors shadow-md font-semibold" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export Matrix</span>
+</button>
+</div>
+</div>
+<!-- Main Card: Daily Incident Trends & Anomaly Detection (min-height 500px) -->
+<div class="flex flex-col w-full bg-surface-container-low rounded-xl shadow-xl p-space-lg relative overflow-hidden">
+<!-- Top Bar with Diagnostics Legend & Dynamic Toggles -->
+<div class="flex flex-wrap items-center justify-between gap-space-md mb-space-md pb-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-2 h-7 rounded-full bg-primary-container"></div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">Temporal Incident Density &amp; Latent Outlier Dispersion</h2>
+<p class="font-body-sm text-body-sm text-outline">Real-time daily incident load mapped against sliding quantile thresholds &amp; tree partition path lengths</p>
+</div>
+</div>
+<!-- Multi-Series Legend Checkboxes -->
+<div class="flex items-center gap-space-md flex-wrap bg-surface-container-lowest/80 px-space-md py-space-xs rounded-lg shadow-sm">
+<label class="flex items-center gap-space-xs cursor-pointer select-none">
+<input checked="" class="accent-primary w-3.5 h-3.5 cursor-pointer rounded" id="toggle-scatter" type="checkbox"/>
+<span class="inline-block w-2 h-2 rounded-full bg-primary/70"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Daily Counts</span>
+</label>
+<label class="flex items-center gap-space-xs cursor-pointer select-none">
+<input checked="" class="accent-primary-container w-3.5 h-3.5 cursor-pointer rounded" id="toggle-rolling" type="checkbox"/>
+<span class="inline-block w-4 h-0.5 bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface">7D Rolling Avg</span>
+</label>
+<label class="flex items-center gap-space-xs cursor-pointer select-none">
+<input checked="" class="accent-tertiary w-3.5 h-3.5 cursor-pointer rounded" id="toggle-baseline" type="checkbox"/>
+<span class="inline-block w-4 h-0.5 border-t border-dashed border-tertiary"></span>
+<span class="font-label-sm text-label-sm text-on-surface">30D Baseline</span>
+</label>
+<label class="flex items-center gap-space-xs cursor-pointer select-none">
+<input checked="" class="accent-error w-3.5 h-3.5 cursor-pointer rounded" id="toggle-anomalies" type="checkbox"/>
+<span class="inline-block w-2.5 h-2.5 rotate-45 bg-error shadow-[0_0_8px_#ffb4ab]"></span>
+<span class="font-label-sm text-label-sm text-error font-semibold">Anomalies (IForest)</span>
+</label>
+</div>
+</div>
+<!-- Chart Visual Canvas Container -->
+<div class="relative w-full min-h-[460px] bg-surface-container-lowest/90 rounded-lg p-space-sm flex flex-col justify-between overflow-hidden shadow-inner">
+<!-- Background Ambient Grid Glows -->
+<div class="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-primary-container/5 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-16 right-12 w-96 h-96 rounded-full bg-error-container/10 blur-3xl pointer-events-none"></div>
+<!-- SVG Main Render Canvas -->
+<div id="prismDailyChart" style="width:100%; height:100%; min-height:420px;"></div>
+<!-- Quick Telemetry Summary Ribbon below main chart -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-space-sm pt-space-xs mt-space-xs bg-surface-container-high/60 px-space-md py-space-sm rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Anomaly Ratio</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-display text-headline-md font-bold text-error">2.4%</span>
+<span class="font-telemetry-sm text-[11px] text-error font-semibold">↑ +0.4%</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">False Positive Rate</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-display text-headline-md font-bold text-tertiary">&lt; 0.12%</span>
+<span class="font-label-sm text-[10px] text-outline">Target &lt;0.5%</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Dataset Drift Score</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-display text-headline-md font-bold text-primary">0.041</span>
+<span class="font-telemetry-sm text-[11px] text-primary-container font-semibold">STABLE</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">IForest Trees / Depth</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-display text-headline-md font-bold text-on-surface">256 / 14</span>
+<span class="font-label-sm text-[10px] text-outline">Sub: 512</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Mean Detection Latency</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-display text-headline-md font-bold text-tertiary">38ms</span>
+<span class="font-telemetry-sm text-[11px] text-tertiary font-semibold">P99: 72ms</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Critical Triage Flag</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-display text-headline-md font-bold text-error">12 EVTS</span>
+<span class="font-label-sm text-[10px] text-error uppercase font-semibold">Action Req</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Two Column Grid Below: Left Forecast (30/60/90D) | Right Anomaly Registry Table -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md w-full items-start">
+<!-- LEFT COLUMN: Predictive Risk Forecast (30 / 60 / 90 Days) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md bg-surface-container-low rounded-xl p-space-lg shadow-xl">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px]">trending_up</span>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Multi-Horizon Risk Forecast</h3>
+<p class="font-body-sm text-body-sm text-outline">Bayesian Structural Time-Series with 95% Confidence Bounds</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xxs bg-surface-container-lowest p-space-xxs rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm px-space-xs py-space-xxs rounded bg-secondary-container text-on-secondary-container font-semibold">95% CI</span>
+</div>
+</div>
+<!-- Forecast SVG Canvas -->
+<div id="prismForecastChart" style="width:100%; height:100%; min-height:280px;"></div>
+<!-- Telemetry Metrics & Tactical Guidance Card below forecast chart -->
+<div class="flex flex-col gap-space-xs p-space-md rounded-lg bg-surface-container-high/70 shadow-sm">
+<div class="flex items-center justify-between pb-space-xxs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-semibold">Projections &amp; Dispatch Heuristics</span>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary">CONFIDENCE: 94.8%</span>
+</div>
+<div id="forecastSummary" class="font-telemetry-md text-telemetry-md text-on-surface leading-relaxed"></div>
+<div class="mt-space-xs pt-space-xs flex items-center gap-space-sm bg-surface-container-lowest/80 p-space-sm rounded">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0">near_me</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] uppercase tracking-wider text-outline">Recommended Resource Shift</span>
+<span class="font-body-md text-body-md font-semibold text-tertiary-fixed">Deploy Tier-2 Inspection Squad to Sector 4 North (Rigging &amp; Hydraulic Valve B)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Anomaly Registry High-Density Table -->
+<div class="lg:col-span-7 flex flex-col gap-space-sm bg-surface-container-low rounded-xl p-space-lg shadow-xl">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-error text-[22px]">emergency_home</span>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Latent Anomaly Registry</h3>
+<p class="font-body-sm text-body-sm text-outline">Isolating decision trees flagged out-of-distribution feature vectors</p>
+</div>
+</div>
+<!-- Live Count Badge -->
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-error-container/60 shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+<span class="font-telemetry-sm text-telemetry-sm text-error uppercase font-bold tracking-wider">Showing 12 Critical Anomaly Events</span>
+</div>
+</div>
+<!-- High-Density Monospace Styled Table -->
+<div class="w-full overflow-x-auto rounded-lg bg-surface-container-lowest/90 shadow-inner">
+<table class="w-full text-left font-telemetry-sm text-telemetry-sm border-collapse">
+<thead>
+<tr class="bg-surface-container-high/90 text-outline uppercase font-label-md text-label-md tracking-wider">
+<th class="py-space-sm px-space-md">Date</th>
+<th class="py-space-sm px-space-md text-right">Daily Count</th>
+<th class="py-space-sm px-space-md text-right">Baseline</th>
+<th class="py-space-sm px-space-md text-right">Deviation %</th>
+<th class="py-space-sm px-space-md text-right">Severity</th>
+<th class="py-space-sm px-space-md">Root Cluster</th>
+<th class="py-space-sm px-space-md text-center">Action</th>
+</tr>
+</thead>
+<tbody id="anomalyTable" class="divide-y-0"></tbody>
+</table>
+</div>
+<!-- Table Footer with Pagination & Auto-Batch Sync Indicator -->
+<div class="flex items-center justify-between pt-space-xs px-space-xs text-outline font-telemetry-sm text-[11px]">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Buffer: Synced 12 of 143 flagged temporal anomalies</span>
+</div>
+<div class="flex items-center gap-space-sm">
+   <button id="prevAnomalyBtn" class="hover:text-on-surface px-space-xs py-space-xxs disabled:opacity-50 disabled:cursor-not-allowed" type="button" onclick="changeAnomalyPage(-1)">
+    ← Prev
+   </button>
+   <span id="anomalyPageIndicator" class="text-on-surface font-bold">
+    1 / 1
+   </span>
+   <button id="nextAnomalyBtn" class="hover:text-on-surface px-space-xs py-space-xxs disabled:opacity-50 disabled:cursor-not-allowed" type="button" onclick="changeAnomalyPage(1)">
+    Next →
+   </button>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initPrismAnalytics() {
+    // Interactive Layer Checkbox Toggles
+    const toggleScatter = document.getElementById('toggle-scatter');
+    const toggleRolling = document.getElementById('toggle-rolling');
+    const toggleBaseline = document.getElementById('toggle-baseline');
+    const toggleAnomalies = document.getElementById('toggle-anomalies');
+
+    const seriesScatter = document.getElementById('series-scatter');
+    const seriesRolling = document.getElementById('series-rolling');
+    const seriesArea = document.getElementById('series-area');
+    const seriesBaseline = document.getElementById('series-baseline');
+    const seriesAnomalies = document.getElementById('series-anomalies');
+
+    if (toggleScatter && seriesScatter) {
+      toggleScatter.addEventListener('change', (e) => {
+        seriesScatter.style.display = e.target.checked ? 'inline' : 'none';
+      });
+    }
+
+    if (toggleRolling && seriesRolling && seriesArea) {
+      toggleRolling.addEventListener('change', (e) => {
+        seriesRolling.style.display = e.target.checked ? 'inline' : 'none';
+        seriesArea.style.display = e.target.checked ? 'inline' : 'none';
+      });
+    }
+
+    if (toggleBaseline && seriesBaseline) {
+      toggleBaseline.addEventListener('change', (e) => {
+        seriesBaseline.style.display = e.target.checked ? 'inline' : 'none';
+      });
+    }
+
+    if (toggleAnomalies && seriesAnomalies) {
+      toggleAnomalies.addEventListener('change', (e) => {
+        seriesAnomalies.style.display = e.target.checked ? 'inline' : 'none';
+      });
+    }
+
+    // Interactive Hover on Anomaly Diamond Markers
+    const tooltip = document.getElementById('anomaly-tooltip');
+    const markers = document.querySelectorAll('.anomaly-marker');
+    const reticleV = document.getElementById('reticle-v');
+
+    markers.forEach(marker => {
+      marker.addEventListener('mouseenter', (ev) => {
+        const date = marker.getAttribute('data-date');
+        const val = marker.getAttribute('data-val');
+        const score = marker.getAttribute('data-score');
+        const cluster = marker.getAttribute('data-cluster');
+
+        if (tooltip) {
+          tooltip.innerHTML = `
+            <div class="flex items-center justify-between pb-space-xxs">
+              <div class="flex items-center gap-space-xs">
+                <span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+                <span class="font-label-sm text-label-sm uppercase font-bold text-error">Isolation Forest Alert</span>
+              </div>
+              <span class="font-telemetry-sm text-[10px] text-tertiary">${date}</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span class="font-body-sm text-body-sm text-outline">Detected Incident Vol:</span>
+              <span class="font-telemetry-lg text-telemetry-lg font-bold text-on-surface">${val} incidents</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span class="font-body-sm text-body-sm text-outline">Cluster Deviation:</span>
+              <span class="font-telemetry-md text-telemetry-md font-bold text-error">+${(Number(score)*90).toFixed(1)}% vs 30D</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span class="font-body-sm text-body-sm text-outline">Path Length Score:</span>
+              <span class="font-telemetry-md text-telemetry-md text-secondary font-semibold">${score}</span>
+            </div>
+            <div class="mt-space-xxs pt-space-xxs bg-surface-container-low/70 px-space-xs py-space-xxs rounded text-[11px] text-on-surface-variant flex items-center justify-between font-body-sm">
+              <span>Signature: <strong class="text-on-surface">${cluster}</strong></span>
+              <span class="text-tertiary font-label-sm uppercase">Sector Live</span>
+            </div>
+          `;
+          tooltip.style.opacity = '1';
+        }
+
+        const circle = marker.querySelector('circle');
+        if (circle && reticleV) {
+          const cx = circle.getAttribute('cx');
+          reticleV.setAttribute('x1', cx);
+          reticleV.setAttribute('x2', cx);
+        }
+      });
+    });
+
+    // Time Range Selector Switcher
+    const timeButtons = document.querySelectorAll('#time-range-group button');
+    timeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        timeButtons.forEach(b => {
+          b.className = 'px-space-sm py-space-xxs font-label-sm text-label-sm rounded text-outline hover:text-on-surface transition-colors';
+        });
+        btn.className = 'px-space-sm py-space-xxs font-label-sm text-label-sm rounded bg-primary-container text-on-primary-container font-semibold shadow-sm';
+      });
+    });
+  })();
+</script>
+</div>
+<div class="section hidden" id="section-sif">
+<div class="flex flex-col w-full">
+<div class="flex flex-col gap-space-md">
+<!-- Context Overline & Diagnostic Strip -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-lowest px-space-md py-space-xs rounded-lg shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-tertiary">SIF-AI ENGINE</span>
+<span class="text-outline-variant font-telemetry-sm text-telemetry-sm">/</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant font-semibold">PRECURSOR_EVAL_v3.4.2</span>
+</div>
+<div class="hidden sm:flex items-center gap-space-xs px-space-xs py-space-xxs rounded bg-surface-container-high text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary">ENSEMBLE ACTIVE (RoBERTa + XGB)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg font-telemetry-sm text-telemetry-sm text-outline">
+<span class="flex items-center gap-space-xs">LATENCY: <strong class="text-on-surface font-telemetry-sm">18.4ms</strong></span>
+<span class="hidden md:flex items-center gap-space-xs">CORPUS PARSED: <strong class="text-primary font-telemetry-sm">20,000 NARRATIVES</strong></span>
+<span class="flex items-center gap-space-xs">PRECISION @ 90: <strong class="text-tertiary font-telemetry-sm">96.8%</strong></span>
+</div>
+</div>
+<!-- Main Operational Grid: 12-column layout split 7 / 5 -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md items-start">
+<!-- Left Column: Live SIF Analysis Input & Results Engine (7 cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-md min-w-0">
+<!-- Live Narrative Ingestion Console -->
+<div class="relative bg-surface-container-low/95 backdrop-blur-2xl rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">psychology</span>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface leading-tight">Live SIF Analysis Input</h2>
+<p class="font-body-sm text-body-sm text-outline">Enter raw incident logs, near-miss report entries, or safety telemetry notes for real-time precursor inference.</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-space-xxs rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm uppercase transition-colors" id="btn-load-preset-1">Angle Grinder</button>
+<button class="px-space-sm py-space-xxs rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm uppercase transition-colors" id="btn-load-preset-2">Scaffold Fall</button>
+</div>
+</div>
+<!-- Narrative Text Well -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-center text-label-sm font-label-sm text-outline px-space-xxs">
+<span>UNSTRUCTURED INCIDENT TEXT</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant" id="char-counter">248 characters</span>
+</div>
+<div class="relative rounded-lg bg-surface-container-lowest shadow-inner p-space-sm focus-within:bg-surface-container-lowest/80 transition-all">
+<textarea class="w-full bg-transparent resize-none outline-none font-body-md text-body-md text-[var(--text-primary)] placeholder:text-outline/40 selection:bg-primary-container selection:text-on-primary-container leading-relaxed" id="incident-narrative" placeholder="Type or paste industrial incident narrative..." rows="4">Worker was operating a 9-inch angle grinder on 14-inch crude pipeline weld joint without secondary face shield. Disc shattered upon binding in bevel notch. Fragments penetrated heavy leather apron causing 4cm abdominal laceration. Hydraulic shutoff failed to trigger immediately.</textarea>
+<div class="absolute bottom-2 right-2 flex items-center gap-space-xs">
+<button class="p-space-xxs rounded hover:bg-surface-container-high text-outline hover:text-on-surface transition-colors flex items-center" id="btn-clear-text" title="Clear text">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Bar with Ensemble Configuration -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs bg-surface-container-low rounded-lg">
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Model Selector Dropdown Simulation -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline mb-space-xxs">Classification Core</span>
+<div class="flex items-center gap-space-xs bg-surface-container-high px-space-sm py-space-xs rounded shadow-sm text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[16px]">neurology</span>
+<span class="font-telemetry-sm text-telemetry-sm font-semibold">RoBERTa-HSE-v3 + XGBoost</span>
+<span class="material-symbols-outlined text-outline text-[16px]">arrow_drop_down</span>
+</div>
+</div>
+<!-- Fast Inference Toggle -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline mb-space-xxs">Fast Inference</span>
+<label class="flex items-center gap-space-xs cursor-pointer select-none bg-surface-container-high px-space-sm py-space-xs rounded shadow-sm">
+<input checked="" class="hidden peer" id="toggle-fp16" type="checkbox"/>
+<div class="w-7 h-4 bg-surface-container-highest peer-checked:bg-primary rounded-full relative transition-colors">
+<div class="w-3 h-3 bg-surface-container-lowest rounded-full absolute top-0.5 left-0.5 peer-checked:left-3.5 transition-all"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface uppercase font-medium">FP16 TensorRT</span>
+</label>
+</div>
+</div>
+<!-- Primary CTA Button -->
+<button class="relative group px-space-xl py-space-sm rounded-lg bg-gradient-to-r from-primary-container via-secondary-container to-secondary text-on-primary font-headline-md text-[13px] font-bold uppercase tracking-wider shadow-lg hover:shadow-primary-container/40 transition-all flex items-center gap-space-xs active:scale-[0.98]" id="btn-analyze">
+<span class="material-symbols-outlined text-[18px] text-tertiary">bolt</span>
+<span>Analyze for SIF Precursors</span>
+</button>
+</div>
+</div>
+<!-- Real-Time Analysis Results Panel -->
+<div class="relative bg-surface-container-low/90 backdrop-blur-2xl rounded-xl p-space-lg shadow-md flex flex-col gap-space-lg transition-all" id="results-panel">
+<!-- Score Badge & Risk Tier Indicator -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md p-space-md rounded-xl bg-gradient-to-r from-error-container/40 via-surface-container-high to-surface-container-high shadow-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-error/20 flex items-center justify-center text-error shadow-inner">
+<span class="material-symbols-outlined text-[28px] animate-pulse">warning</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-error font-semibold">CRITICAL ALERT DISPATCH</span>
+<span class="px-space-xs py-space-xxs rounded bg-error-container text-on-error-container font-label-sm text-label-sm uppercase font-bold">DEFCON-2</span>
+</div>
+<div class="font-telemetry-display text-telemetry-display text-error font-bold leading-none mt-space-xxs">
+                  73.2<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant font-normal"> / 100</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold tracking-wide mt-space-xxs">HIGH SIF PRECURSOR RISK DETECTED</span>
+</div>
+</div>
+<!-- Risk Meter mini gauge visual -->
+<div class="flex flex-col gap-space-xxs min-w-[180px]">
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span>THRESHOLD CUTOFF</span>
+<span class="font-telemetry-sm text-telemetry-sm text-error font-bold">&gt; 65.0 RISK</span>
+</div>
+<div class="h-2 w-full rounded-full bg-surface-container-lowest overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 35%"></div>
+<div class="h-full bg-secondary" style="width: 30%"></div>
+<div class="h-full bg-error" style="width: 35%"></div>
+</div>
+<div class="flex justify-between text-[9px] font-telemetry-sm text-outline">
+<span>LOW (0-35)</span>
+<span>MED (36-64)</span>
+<span class="text-error">SIF (65-100)</span>
+</div>
+</div>
+</div>
+<!-- Category Tags Pill Badges -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Classified High-Energy Precursor Vectors</span>
+<div class="flex flex-wrap gap-space-sm">
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded bg-surface-container-high shadow-sm">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Fall / Struck-by</span>
+<span class="font-telemetry-sm text-telemetry-sm px-space-xs rounded bg-surface-container text-error font-bold">84%</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded bg-surface-container-high shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Energy Release (Mechanical)</span>
+<span class="font-telemetry-sm text-telemetry-sm px-space-xs rounded bg-surface-container text-secondary font-bold">73%</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded bg-surface-container-high shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">PPE Non-Compliance</span>
+<span class="font-telemetry-sm text-telemetry-sm px-space-xs rounded bg-surface-container text-tertiary font-bold">68%</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded bg-surface-container-high shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Secondary Control Bypass</span>
+<span class="font-telemetry-sm text-telemetry-sm px-space-xs rounded bg-surface-container text-primary font-bold">59%</span>
+</div>
+</div>
+</div>
+<!-- SHAP Explainability Decomposition (Waterfall/Horizontal Bars) -->
+<div class="flex flex-col gap-space-sm bg-surface-container-lowest/70 p-space-md rounded-xl shadow-inner">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px]">waterfall_chart</span>
+<span class="font-headline-md text-[13px] font-semibold text-on-surface">SHAP Value Attribution Decomposition</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Base Log-Odds: 0.14</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">
+              Additive feature importance attribution calculated via kernel SHAP across parsed incident narrative tokens.
+            </p>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Item 1 -->
+<div class="flex flex-col gap-space-xxs">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-error text-[14px]">add_circle</span>
+                    Injury Severity Context ("4cm abdominal laceration", "penetrated")
+                  </span>
+<span class="font-telemetry-sm text-telemetry-sm text-error font-bold">+29.3%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-error rounded-full transition-all duration-700" style="width: 78%"></div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col gap-space-xxs">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-error text-[14px]">add_circle</span>
+                    Equipment Failure Factor ("disc shattered", "failed to trigger")
+                  </span>
+<span class="font-telemetry-sm text-telemetry-sm text-error font-bold">+18.4%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-error/80 rounded-full transition-all duration-700" style="width: 54%"></div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[14px]">add_circle</span>
+                  Hazard Energy Level ("9-inch angle grinder", "crude pipeline")
+                </span>
+<span class="font-telemetry-sm text-telemetry-sm text-secondary font-bold" id="kpiSIFPct">+14.2%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-700" style="width: 42%"></div>
+</div>
+<!-- Item 4 -->
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface font-medium flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[14px]">add_circle</span>
+                  Safety Barrier Void ("without secondary face shield", "hydraulic shutoff failed")
+                </span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary font-bold">+11.3%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-700" style="width: 32%"></div>
+</div>
+</div>
+</div>
+<!-- Named Entity Extraction (NER) Chips -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-tertiary">Bio-NLP Named Entity Extraction (NER)</span>
+<span class="font-label-sm text-label-sm text-outline">4 KEY ENTITIES ISOLATED</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-xs">
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-high shadow-sm">
+<div class="p-space-xs rounded bg-surface-container text-tertiary">
+<span class="material-symbols-outlined text-[16px]">construction</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-tertiary uppercase tracking-wider font-semibold">EQUIPMENT ENTITY</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface truncate font-semibold">9-inch angle grinder (14" pipeline)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-high shadow-sm">
+<div class="p-space-xs rounded bg-surface-container text-error">
+<span class="material-symbols-outlined text-[16px]">dangerous</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-error uppercase tracking-wider font-semibold">HAZARD MECHANIC</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface truncate font-semibold">Disc shatter &amp; bevel binding</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-high shadow-sm">
+<div class="p-space-xs rounded bg-surface-container text-secondary">
+<span class="material-symbols-outlined text-[16px]">accessibility</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-secondary uppercase tracking-wider font-semibold">ANATOMICAL TARGET</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface truncate font-semibold">Abdominal region (4cm laceration)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-high shadow-sm">
+<div class="p-space-xs rounded bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[16px]">gpp_bad</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-wider font-semibold">CONTROL VOID / FAILURE</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface truncate font-semibold">Hydraulic auto-cutoff failed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Recommended Intervention Banner -->
+<div class="flex items-start gap-space-md p-space-md rounded-lg bg-surface-container-high text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[22px] shrink-0 mt-0.5">verified_user</span>
+<div class="flex flex-col gap-space-xxs">
+<span class="font-headline-md text-[13px] font-semibold text-on-surface">Recommended Mission Control Intervention</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Enforce Immediate Stop Work Authority (SWA) on Pipeline Segment 4. Issue tool safety inspection across all 9-inch handheld grinding assemblies and verify redundant shutoff valve calibrations.
+              </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stacked Visual Intelligence Cards (5 cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-md min-w-0">
+<!-- Top Card: SIF Detection Summary across Enterprise -->
+<div class="relative bg-surface-container-low/95 backdrop-blur-2xl rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">stacked_bar_chart</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Precursor Frequency Corpus</h3>
+<span class="font-label-sm text-label-sm text-outline">Across 20,000 Analyzed Industrial Reports</span>
+</div>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm px-space-xs py-space-xxs rounded bg-surface-container text-tertiary font-semibold">N=20,000</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Macro-statistical distribution of primary precursor classifications mapped via multi-label classifier over global facility incidents.
+          </p>
+<!-- Horizontal Bar Chart Layout -->
+<div class="flex flex-col gap-space-md pt-space-xs">
+<!-- Category 1 -->
+<div class="flex flex-col gap-space-xxs">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="text-on-surface font-medium">Caught-in / Between Hazards</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface font-bold">6,820 <span class="text-outline font-normal">(34.1%)</span></span>
+</div>
+<div class="w-full h-3 rounded bg-surface-container-lowest overflow-hidden flex">
+<div class="h-full bg-error rounded transition-all duration-500" style="width: 34.1%"></div>
+</div>
+</div>
+<!-- Category 2 -->
+<div class="flex flex-col gap-space-xxs">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="text-on-surface font-medium">Fall from Elevation (&gt;2m)</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface font-bold">5,140 <span class="text-outline font-normal">(25.7%)</span></span>
+</div>
+<div class="w-full h-3 rounded bg-surface-container-lowest overflow-hidden flex">
+<div class="h-full bg-secondary rounded transition-all duration-500" style="width: 25.7%"></div>
+</div>
+</div>
+<!-- Category 3 -->
+<div class="flex flex-col gap-space-xxs">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="text-on-surface font-medium">High Energy Arc / Pressure Burst</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface font-bold">3,920 <span class="text-outline font-normal">(19.6%)</span></span>
+</div>
+<div class="w-full h-3 rounded bg-surface-container-lowest overflow-hidden flex">
+<div class="h-full bg-primary rounded transition-all duration-500" style="width: 19.6%"></div>
+</div>
+</div>
+<!-- Category 4 -->
+<div class="flex flex-col gap-space-xxs">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="text-on-surface font-medium">Struck-by Projectile / Debris</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface font-bold">2,410 <span class="text-outline font-normal">(12.1%)</span></span>
+</div>
+<div class="w-full h-3 rounded bg-surface-container-lowest overflow-hidden flex">
+<div class="h-full bg-tertiary rounded transition-all duration-500" style="width: 12.1%"></div>
+</div>
+</div>
+<!-- Category 5 -->
+<div class="flex flex-col gap-space-xxs">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="text-on-surface font-medium">Chemical &amp; Toxic Vapor Inhalation</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface font-bold">1,710 <span class="text-outline font-normal">(8.5%)</span></span>
+</div>
+<div class="w-full h-3 rounded bg-surface-container-lowest overflow-hidden flex">
+<div class="h-full bg-on-surface-variant rounded transition-all duration-500" style="width: 8.5%"></div>
+</div>
+</div>
+</div>
+<!-- Bottom Micro Ticker for Top Card -->
+<div class="flex items-center justify-between pt-space-xs text-label-sm font-label-sm text-outline border-t border-outline-variant/10">
+<span class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary">update</span>
+              Updated 3 mins ago
+            </span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant">Model confidence avg: 91.4%</span>
+</div>
+</div>
+<!-- Bottom Card: Severity Distribution Donut Chart -->
+<div class="relative bg-surface-container-low/95 backdrop-blur-2xl rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">donut_large</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Severity Distribution</h3>
+<span class="font-label-sm text-label-sm text-outline">Precursor Risk Categorization</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xxs">
+<button class="px-space-xs py-space-xxs rounded bg-surface-container text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface">24H</button>
+<button class="px-space-xs py-space-xxs rounded bg-surface-container-high text-label-sm font-label-sm text-primary font-semibold">ALL</button>
+</div>
+</div>
+<!-- Inline Donut SVG & Metrics Display -->
+<div class="flex flex-col sm:flex-row items-center justify-around gap-space-lg py-space-xs">
+<!-- Donut SVG Visualization -->
+<div class="relative w-44 h-44 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<!-- Background Ring -->
+<circle class="text-surface-container-lowest" cx="50" cy="50" fill="transparent" r="38" stroke="currentColor" stroke-width="12"></circle>
+<!-- Critical Segment (24%) -> circumference ~ 238.76. 24% = 57.3. stroke-dasharray="57.3 181.46" stroke-dashoffset="0" -->
+<circle class="text-error" cx="50" cy="50" fill="transparent" r="38" stroke="currentColor" stroke-dasharray="57.3 181.5" stroke-dashoffset="0" stroke-width="12"></circle>
+<!-- High Segment (38%) -> 38% = 90.7. offset = -57.3 -->
+<circle class="text-secondary" cx="50" cy="50" fill="transparent" r="38" stroke="currentColor" stroke-dasharray="90.7 148.1" stroke-dashoffset="-57.3" stroke-width="12"></circle>
+<!-- Moderate Segment (26%) -> 26% = 62.1. offset = -(57.3 + 90.7) = -148.0 -->
+<circle class="text-primary-container" cx="50" cy="50" fill="transparent" r="38" stroke="currentColor" stroke-dasharray="62.1 176.7" stroke-dashoffset="-148.0" stroke-width="12"></circle>
+<!-- Low Segment (12%) -> 12% = 28.65. offset = -(148.0 + 62.1) = -210.1 -->
+<circle class="text-tertiary" cx="50" cy="50" fill="transparent" r="38" stroke="currentColor" stroke-dasharray="28.65 210.11" stroke-dashoffset="-210.1" stroke-width="12"></circle>
+</svg>
+<!-- Central Donut Readout -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-space-xs pointer-events-none">
+<span class="font-telemetry-display text-[20px] font-bold text-on-surface leading-tight">20,000</span>
+<span class="font-label-sm text-[9px] text-outline uppercase tracking-wider leading-none">Evaluated</span>
+</div>
+</div>
+<!-- Interactive Legend with Filter Buttons -->
+<div class="flex flex-col gap-space-xs w-full max-w-[220px]">
+<button class="flex items-center justify-between p-space-xs rounded hover:bg-surface-container-high transition-colors group text-left">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-error transition-colors">Critical SIF</span>
+</div>
+<div class="font-telemetry-sm text-telemetry-sm font-bold text-error">24% <span class="text-outline font-normal">(4,800)</span></div>
+</button>
+<button class="flex items-center justify-between p-space-xs rounded hover:bg-surface-container-high transition-colors group text-left">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-secondary transition-colors">High Precursor</span>
+</div>
+<div class="font-telemetry-sm text-telemetry-sm font-bold text-secondary">38% <span class="text-outline font-normal">(7,600)</span></div>
+</button>
+<button class="flex items-center justify-between p-space-xs rounded hover:bg-surface-container-high transition-colors group text-left">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Moderate Risk</span>
+</div>
+<div class="font-telemetry-sm text-telemetry-sm font-bold text-primary">26% <span class="text-outline font-normal">(5,200)</span></div>
+</button>
+<button class="flex items-center justify-between p-space-xs rounded hover:bg-surface-container-high transition-colors group text-left">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-tertiary transition-colors">Low Severity</span>
+</div>
+<div class="font-telemetry-sm text-telemetry-sm font-bold text-tertiary">12% <span class="text-outline font-normal">(2,400)</span></div>
+</button>
+</div>
+</div>
+<!-- Enterprise Calibration Footnote -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-space-xs font-telemetry-sm text-telemetry-sm text-outline">
+<span class="material-symbols-outlined text-tertiary text-[16px]">sync</span>
+<span>CALIBRATED WITH OSHA 1904 &amp; ISO 45001 STANDARDS</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary hover:underline uppercase tracking-wider font-semibold">Audit Logs</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const narrativeInput = document.getElementById('incident-narrative');
+    const charCounter = document.getElementById('char-counter');
+    const analyzeBtn = document.getElementById('btn-analyze');
+    const resultsPanel = document.getElementById('results-panel');
+    const btnPreset1 = document.getElementById('btn-load-preset-1');
+    const btnPreset2 = document.getElementById('btn-load-preset-2');
+    const btnClear = document.getElementById('btn-clear-text');
+
+    const sample1 = "Worker was operating a 9-inch angle grinder on 14-inch crude pipeline weld joint without secondary face shield. Disc shattered upon binding in bevel notch. Fragments penetrated heavy leather apron causing 4cm abdominal laceration. Hydraulic shutoff failed to trigger immediately.";
+    const sample2 = "Technician slipped on icy scaffold board at Level 4 (approx 12 meters elevation). Primary lanyard self-retracting lifeline (SRL) failed to lock on initial descent due to sub-zero grease freeze. Secondary shock pack arrested fall 1.5m below working deck. Worker sustained fractured collarbone.";
+
+    function updateChars() {
+      if (charCounter && narrativeInput) {
+        charCounter.textContent = narrativeInput.value.length + ' characters';
+      }
+    }
+
+    if (narrativeInput) {
+      narrativeInput.addEventListener('input', updateChars);
+    }
+
+    if (btnPreset1 && narrativeInput) {
+      btnPreset1.addEventListener('click', function() {
+        narrativeInput.value = sample1;
+        updateChars();
+      });
+    }
+
+    if (btnPreset2 && narrativeInput) {
+      btnPreset2.addEventListener('click', function() {
+        narrativeInput.value = sample2;
+        updateChars();
+      });
+    }
+
+    if (btnClear && narrativeInput) {
+      btnClear.addEventListener('click', function() {
+        narrativeInput.value = '';
+        updateChars();
+        narrativeInput.focus();
+      });
+    }
+
+    if (analyzeBtn && resultsPanel) {
+      analyzeBtn.addEventListener('click', function() {
+        const originalText = analyzeBtn.innerHTML;
+        analyzeBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Computing SHAP Attributions...</span>';
+        analyzeBtn.disabled = true;
+
+        resultsPanel.classList.add('opacity-40');
+
+        setTimeout(function() {
+          analyzeBtn.innerHTML = originalText;
+          analyzeBtn.disabled = false;
+          resultsPanel.classList.remove('opacity-40');
+        }, 650);
+      });
+    }
+  })();
+</script>
+</div>
+<div class="section hidden" id="section-risk">
+<div class="flex flex-col w-full gap-space-lg text-on-surface">
+<!-- Top Real-time Tactical Ticker & KPI Strip -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Metric 1 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col justify-between group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-error-container/20 blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">High-Risk Sites</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container text-error font-label-sm text-[10px] font-bold">DEFCON-2</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-sm">
+<span class="font-telemetry-display text-telemetry-display text-error">14</span>
+<span class="font-label-md text-label-md text-outline">Sites Flagged</span>
+</div>
+<div class="flex items-center justify-between font-telemetry-sm text-telemetry-sm text-on-surface-variant">
+<span class="flex items-center gap-space-xxs text-error">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +3 vs last sprint
+        </span>
+<span class="text-outline">Threshold &gt;80.0</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col justify-between group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-secondary-container/20 blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Median Site Score</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-tertiary font-label-sm text-[10px]">NORMALIZED</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-sm">
+<span class="font-telemetry-display text-telemetry-display text-primary">58.2</span>
+<span class="font-label-md text-label-md text-outline">/ 100 IDX</span>
+</div>
+<div class="flex items-center justify-between font-telemetry-sm text-telemetry-sm text-on-surface-variant">
+<span class="flex items-center gap-space-xxs text-tertiary">
+<span class="material-symbols-outlined text-[14px]">horizontal_rule</span> ±0.4 variance
+        </span>
+<span class="text-outline">IQR: 41.0 - 72.5</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col justify-between group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-primary-container/20 blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Human Review Queue</span>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-sm">
+<span class="font-telemetry-display text-telemetry-display text-on-surface">48</span>
+<span class="font-label-md text-label-md text-error font-semibold">Incidents Escrow</span>
+</div>
+<div class="flex items-center justify-between font-telemetry-sm text-telemetry-sm text-on-surface-variant">
+<span class="text-error font-medium">12 SLA Overdue</span>
+<span class="text-outline">Triage Lead: 0.8h</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col justify-between group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-tertiary-container/20 blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Audit Compliance</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-tertiary font-label-sm text-[10px]">ISO-45001</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-sm">
+<span class="font-telemetry-display text-telemetry-display text-tertiary">99.1%</span>
+<span class="font-label-md text-label-md text-outline">Verified</span>
+</div>
+<div class="flex items-center justify-between font-telemetry-sm text-telemetry-sm text-on-surface-variant">
+<span class="text-tertiary flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[14px]">verified</span> Validated Run
+        </span>
+<span class="text-outline">Delta: +0.2%</span>
+</div>
+</div>
+</section>
+<!-- Main Full-Width Risk Classifier Terminal Table -->
+<section class="rounded-xl bg-surface-container-low p-space-md shadow-xl flex flex-col gap-space-sm">
+<!-- Console Toolbar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-2.5 h-8 rounded-full bg-error"></div>
+<div>
+<h2 class="font-headline-md text-headline-md tracking-tight text-on-surface">Top 20 HSE High-Risk Incidents Priority Console</h2>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Algorithmic Predictive Inference • Real-time Neural Weighting</p>
+</div>
+</div>
+<div class="flex items-center flex-wrap gap-space-xs font-label-md text-label-md">
+<!-- Search -->
+<div class="flex items-center bg-surface-container-highest px-space-sm py-space-xs rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] mr-space-xs text-outline">search</span>
+<input class="bg-transparent font-telemetry-sm text-telemetry-sm text-[var(--text-primary)] placeholder-outline focus:outline-none w-44" id="tableSearch" onkeyup="filterIncidents()" placeholder="FILTER FACILITY / TYPE..." type="text"/>
+</div>
+<!-- Filter dropdown -->
+<select class="bg-surface-container-highest text-on-surface font-label-sm text-label-sm px-space-sm py-space-xs rounded focus:outline-none" id="severitySelect" onchange="filterIncidents()">
+<option value="ALL">ALL SEVERITIES</option>
+<option value="CRITICAL">CRITICAL ONLY</option>
+<option value="HIGH">HIGH ONLY</option>
+<option value="MODERATE">MODERATE ONLY</option>
+</select>
+<!-- CSV Export -->
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm px-space-md py-space-xs rounded flex items-center gap-space-xs shadow-md transition-all" onclick="exportCSV()">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>EXPORT CSV</span>
+</button>
+</div>
+</div>
+<!-- The Dense Data Grid -->
+<div class="overflow-x-auto rounded bg-surface-container-lowest">
+<table class="w-full text-left font-body-sm text-body-sm select-none border-collapse" id="incidentGrid">
+<thead>
+<tr class="bg-surface-container-high/75 text-outline font-label-sm text-label-sm uppercase tracking-wider h-8">
+<th class="px-space-md py-space-xs w-14">Rank</th>
+<th class="px-space-md py-space-xs cursor-pointer hover:text-primary transition-colors" onclick="sortTable(1)">Risk Score ▾</th>
+<th class="px-space-md py-space-xs">Severity</th>
+<th class="px-space-md py-space-xs cursor-pointer hover:text-primary transition-colors" onclick="sortTable(3)">Event Date</th>
+<th class="px-space-md py-space-xs">Facility Location</th>
+<th class="px-space-md py-space-xs">Hazard Classification</th>
+<th class="px-space-md py-space-xs">Injury Vector</th>
+<th class="px-space-md py-space-xs">Human Governance</th>
+<th class="px-space-md py-space-xs text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0" id="tableBody"></tbody>
+</table>
+</div>
+<!-- Table Footing / Pagination -->
+<div class="flex flex-col sm:flex-row items-center justify-between font-telemetry-sm text-telemetry-sm text-outline pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span id="riskShowingText">SHOWING 1-10 OF 20 HIGH-RISK INCIDENTS</span>
+<span class="text-tertiary">• FASTAPI STREAM CACHED 14ms AGO</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs sm:mt-0" id="riskPagination">
+<!-- Dynamically populated -->
+</div>
+</div>
+</section>
+<!-- Two Column Lower Grid: State Heatmap & Risk Distribution -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-start">
+<!-- Left Column (7 cols): Horizontal Bar Heatmap of Top 15 States -->
+<div class="lg:col-span-7 rounded-xl bg-surface-container-low p-space-md shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">State Risk Indexing</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Top 15 Jurisdictions by Avg Severity</h3>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-tertiary"></span> Moderate</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-secondary"></span> High</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-error"></span> Critical</span>
+</div>
+</div>
+<!-- Horizontal Bars Stack -->
+<div id="riskHeatmapChart" style="width:100%; height:100%; min-height:400px;"></div>
+</div>
+<!-- Right Column (5 cols): Distribution Donut + Operating Sector Vector Breakdown -->
+<div class="lg:col-span-5 rounded-xl bg-surface-container-low p-space-md shadow-lg flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Machine Learning Model Breakdown</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Risk Level &amp; Sector Spread</h3>
+</div>
+<!-- Donut Visualization Box -->
+<div class="flex flex-col sm:flex-row items-center justify-around gap-space-md p-space-sm rounded-lg bg-surface-container-lowest">
+<!-- SVG Multi-Segment Donut Chart -->
+<div id="riskLevelChart" style="width:100%; height:100%; min-height:350px;"></div>
+<!-- Legend Pills -->
+</div>
+<!-- Sector Breakdown Metric Group -->
+<div class="flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Risk Vector by Industry Domain</span>
+<div class="space-y-space-xs">
+<!-- Sector 1 -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface mb-0.5">
+<span>Offshore Drilling</span>
+<span class="font-telemetry-sm text-telemetry-sm text-error font-bold">41.2% Severity Share</span>
+</div>
+<div class="h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 41.2%;"></div>
+</div>
+</div>
+<!-- Sector 2 -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface mb-0.5">
+<span>Refining &amp; Petrochemicals</span>
+<span class="font-telemetry-sm text-telemetry-sm text-secondary font-bold">29.4% Severity Share</span>
+</div>
+<div class="h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 29.4%;"></div>
+</div>
+</div>
+<!-- Sector 3 -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface mb-0.5">
+<span>Chemical Processing Plants</span>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary font-bold">18.7% Severity Share</span>
+</div>
+<div class="h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 18.7%;"></div>
+</div>
+</div>
+<!-- Sector 4 -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface mb-0.5">
+<span>Pipeline &amp; Rail Transport</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary font-bold">10.7% Severity Share</span>
+</div>
+<div class="h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 10.7%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Model Performance Banner -->
+<div class="p-space-sm rounded bg-surface-container-high flex items-center justify-between font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary">memory</span>
+<span>XGBoost + LSTM Ensemble</span>
+</div>
+<span class="text-tertiary font-bold">AUC: 0.964</span>
+</div>
+</div>
+</section>
+<!-- Interactive Dossier Modal (Hidden by default) -->
+<div class="fixed inset-0 bg-surface-container-lowest/80 backdrop-blur-md z-50 flex items-center justify-center p-space-md hidden" id="dossierModal">
+<div class="bg-surface-container-low rounded-xl p-space-lg max-w-2xl w-full shadow-2xl flex flex-col gap-space-md border-0">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-xs py-0.5 bg-error-container text-error rounded font-telemetry-lg text-telemetry-lg font-bold" id="modalRank">#01</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface" id="modalTitle">Incident Investigation Dossier</h3>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider" id="modalFacility">Facility details</p>
+</div>
+</div>
+<button class="text-outline hover:text-on-surface" onclick="closeDossierModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-space-md bg-surface-container-highest/40 p-space-md rounded">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase">Computed Risk Score</span>
+<p class="font-telemetry-display text-telemetry-display text-error" id="modalScore">94.8</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase">Model Confidence</span>
+<p class="font-telemetry-display text-telemetry-display text-tertiary">98.4%</p>
+</div>
+<div class="col-span-2">
+<span class="font-label-sm text-label-sm text-outline uppercase">SHAP Contributing Factors</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">High pressure delta (SHAP +0.42), delayed safety relief valve cycle (SHAP +0.31), consecutive 12h shifts logged by field technicians (SHAP +0.18).</p>
+</div>
+</div>
+<div class="flex justify-end gap-space-sm">
+<button class="px-space-md py-space-xs rounded bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all" onclick="closeDossierModal()">Close</button>
+<button class="px-space-md py-space-xs rounded bg-error text-on-error font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-space-xs" onclick="alert('Priority Escalation dispatches directly to On-Call HSE Director.'); closeDossierModal();">
+<span class="material-symbols-outlined text-[16px]">priority_high</span> Escalate Immediately
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function openDossierModal(rank, facility, score) {
+    document.getElementById('modalRank').innerText = rank;
+    document.getElementById('modalFacility').innerText = facility;
+    document.getElementById('modalScore').innerText = score.toFixed(1);
+    document.getElementById('dossierModal').classList.remove('hidden');
+  }
+
+  function closeDossierModal() {
+    document.getElementById('dossierModal').classList.add('hidden');
+  }
+
+  function filterIncidents() {
+    const input = document.getElementById("tableSearch").value.toUpperCase();
+    const severityFilter = document.getElementById("severitySelect").value.toUpperCase();
+    const table = document.getElementById("incidentGrid");
+    const tr = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < tr.length; i++) {
+      const facilityCol = tr[i].getElementsByTagName("td")[4];
+      const typeCol = tr[i].getElementsByTagName("td")[5];
+      const severityCol = tr[i].getElementsByTagName("td")[2];
+      
+      if (facilityCol && typeCol && severityCol) {
+        const txtValue = (facilityCol.textContent || facilityCol.innerText) + " " + (typeCol.textContent || typeCol.innerText);
+        const severityValue = severityCol.textContent || severityCol.innerText;
+        
+        const matchesText = txtValue.toUpperCase().indexOf(input) > -1;
+        const matchesSeverity = (severityFilter === "ALL") || (severityValue.toUpperCase().indexOf(severityFilter) > -1);
+
+        if (matchesText && matchesSeverity) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  let sortAsc = false;
+  function sortTable(colIndex) {
+    const table = document.getElementById("incidentGrid");
+    let rows, switching, i, x, y, shouldSwitch;
+    switching = true;
+    sortAsc = !sortAsc;
+    
+    while (switching) {
+      switching = false;
+      rows = table.rows;
+      for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementsByTagName("TD")[colIndex];
+        y = rows[i + 1].getElementsByTagName("TD")[colIndex];
+        
+        let xVal = parseFloat(x.innerText) || x.innerText.toLowerCase();
+        let yVal = parseFloat(y.innerText) || y.innerText.toLowerCase();
+
+        if (sortAsc) {
+          if (xVal > yVal) { shouldSwitch = true; break; }
+        } else {
+          if (xVal < yVal) { shouldSwitch = true; break; }
+        }
+      }
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    }
+  }
+
+  function exportCSV() {
+    const table = document.getElementById("incidentGrid");
+    let csvString = "";
+    for (let i = 0; i < table.rows.length; i++) {
+      let rowData = [];
+      for (let j = 0; j < table.rows[i].cells.length - 1; j++) {
+        let cleanText = table.rows[i].cells[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
+        rowData.push('"' + cleanText + '"');
+      }
+      csvString += rowData.join(",") + "\r\n";
+    }
+    const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", "SIIH2026_Risk_Prioritization_Export.csv");
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+</script>
+</div>
+<div class="section hidden" id="section-incidents">
+<div class="glass-card">
+<div class="card-header">
+<div class="card-title">📋 Incident Explorer</div>
+<div style="display:flex; gap:0.5rem; align-items:center">
+<input id="incidentSearch" onkeyup="if(event.key==='Enter') loadIncidents()" placeholder="Search narratives..." style="padding:0.4rem 0.8rem; border-radius:8px; border:1px solid var(--border-glass);
+                                      background:rgba(0,0,0,0.3); color:var(--text-primary); font-size:0.82rem; width:220px" type="text"/>
+<select id="incidentFilter" onchange="loadIncidents()" style="padding:0.4rem 0.6rem; border-radius:8px; border:1px solid var(--border-glass);
+                                       background:rgba(0,0,0,0.3); color:var(--text-primary); font-size:0.82rem">
+<option value="">All Levels</option>
+<option value="critical">Critical</option>
+<option value="high">High</option>
+<option value="moderate">Moderate</option>
+<option value="low">Low</option>
+</select>
+<button class="btn-primary" onclick="loadIncidents()" style="margin:0; padding:0.4rem 1rem">Search</button>
+</div>
+</div>
+<div style="overflow-x:auto">
+<table class="risk-table" id="incidentTable">
+<thead>
+<tr>
+<th>ID</th>
+<th>Score</th>
+<th>Level</th>
+<th>Date</th>
+<th>State</th>
+<th>Employer</th>
+<th>Narrative</th>
+</tr>
+</thead>
+<tbody id="incidentTableBody"></tbody>
+</table>
+</div>
+<div id="pagination" style="display:flex; justify-content:center; gap:0.5rem; margin-top:1rem"></div>
+</div>
+</div><div class="section hidden" id="section-governance">
+<div class="grid-2">
+<div class="glass-card">
+<div class="card-header">
+<div class="card-title">⚖️ Fairness &amp; Bias Mitigation</div>
+<div class="card-subtitle">Geographic Demographic Parity</div>
+</div>
+<div id="fairnessAlerts"></div>
+<div style="overflow-x:auto; overflow-y:auto; max-height:400px; margin-top:1rem;">
+<table class="risk-table" id="fairnessTable">
+<thead>
+<tr>
+<th>State / Group</th>
+<th>Mean Risk</th>
+<th>Disparity Ratio</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="fairnessTableBody"></tbody>
+</table>
+</div>
+</div>
+<div class="glass-card">
+<div class="card-header">
+<div class="card-title">📉 Model Monitoring &amp; Drift</div>
+<div class="card-subtitle">Evidently AI Statistical Proxy</div>
+</div>
+<div id="driftAlerts"></div>
+<div style="margin-top:1rem; padding:1.5rem; background:rgba(0,0,0,0.2); border-radius:12px; border:1px solid var(--border-glass);">
+<div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+<span style="color:var(--text-muted)">Metric Tracked</span>
+<strong id="driftMetric" style="color:var(--text-primary)">—</strong>
+</div>
+<div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+<span style="color:var(--text-muted)">Historical Baseline</span>
+<strong id="driftBaseline" style="color:var(--text-primary)">—</strong>
+</div>
+<div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+<span style="color:var(--text-muted)">Current Distribution</span>
+<strong id="driftCurrent" style="color:var(--text-primary)">—</strong>
+</div>
+<div style="display:flex; justify-content:space-between; margin-bottom:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.05);">
+<span style="color:var(--text-muted)">Drift Magnitude</span>
+<strong id="driftMagnitude" style="color:var(--accent-amber)">—</strong>
+</div>
+<div style="display:flex; justify-content:space-between;">
+<span style="color:var(--text-muted)">Recommended Action</span>
+<strong id="driftAction" style="color:var(--text-primary)">—</strong>
+</div>
+</div>
+</div>
+</div>
+</div></main></div><script>
+        // ================================================================
+        // STATE
+        // ================================================================
+        let currentSection = 'overview';
+        let statsData = null;
+        let currentPage = 1;
+        function getPlotlyDark() {
+            return {
+                autosize: true,
+                showlegend: false,
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                font: { color: '#94a3b8', family: 'Inter' },
+                xaxis: { gridcolor: 'rgba(255,255,255,0.05)', zerolinecolor: 'rgba(255,255,255,0.05)' },
+                yaxis: { gridcolor: 'rgba(255,255,255,0.05)', zerolinecolor: 'rgba(255,255,255,0.05)' },
+                margin: { t: 30, r: 20, b: 50, l: 50 },
+                colorway: ['#3b82f6', '#8b5cf6', '#06b6d4', '#ec4899', '#10b981', '#f59e0b', '#ef4444'],
+            };
+        }
+        const PLOTLY_CFG = { responsive: true, displayModeBar: false };
+
+        // ================================================================
+        // NAVIGATION
+        // ================================================================
+        function showSection(name) {
+            document.querySelectorAll('.section').forEach(s => { s.classList.remove('active'); s.classList.add('hidden'); });
+            document.querySelectorAll('nav a').forEach(t => t.className = 'flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md group');
+            document.getElementById('section-' + name).classList.remove('hidden'); document.getElementById('section-' + name).classList.add('active');
+            const el = event.currentTarget; el.className = 'flex items-center gap-space-md px-space-md py-space-sm rounded transition-colors font-body-md group bg-surface-container-high text-primary border-l-2 border-primary shadow-[inset_4px_0_12px_rgba(77,142,255,0.15)]';
+                            el.querySelector('span').className = 'material-symbols-outlined text-[18px] text-outline group-hover:text-primary transition-colors';
+            
+            currentSection = name;
+            
+            // Force Plotly resize on all charts
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+            }, 100);
+
+
+            if (name === 'prism' && statsData) loadPRISM();
+            if (name === 'risk' && statsData) loadRisk();
+            if (name === 'incidents' && statsData) loadIncidents();
+            if (name === 'governance') loadGovernance();
+        }
+
+        // ================================================================
+        // DATA LOADING
+        // ================================================================
+        async function fetchJSON(url) {
+            const res = await fetch(url);
+            return res.json();
+        }
+
+        async function init() {
+            try {
+                statsData = await fetchJSON('/api/v1/stats');
+                if (statsData.status === 'loading') {
+                    setTimeout(init, 3000);
+                    return;
+                }
+                if(document.getElementById('statusText')) document.getElementById('statusText').textContent = `System Active — ${statsData.load_time_seconds}s startup`;
+                updateKPIs();
+                loadOverviewCharts();
+                loadSIFSummary();
+            } catch (e) {
+                setTimeout(init, 2000);
+            }
+        }
+
+        // ================================================================
+        // KPIs
+        // ================================================================
+        function updateKPIs() {
+            const s = statsData;
+            if(document.getElementById('kpiTotal')) document.getElementById('kpiTotal').textContent = s.total_incidents?.toLocaleString() || '—';
+            if(document.getElementById('kpiDateRange')) document.getElementById('kpiDateRange').textContent = s.date_range || '';
+            if(document.getElementById('kpiSIF')) document.getElementById('kpiSIF').textContent = s.sif_summary?.sif_precursors_found?.toLocaleString() || '—';
+            if(document.getElementById('kpiSIFPct')) document.getElementById('kpiSIFPct').textContent = `${s.sif_summary?.sif_percentage || 0}% of analyzed reports`;
+            if(document.getElementById('kpiAvgRisk')) document.getElementById('kpiAvgRisk').textContent = s.risk_distribution?.mean_score || '—';
+            if(document.getElementById('kpiRiskSub')) document.getElementById('kpiRiskSub').textContent = `Median: ${s.risk_distribution?.median_score || '—'}`;
+            if(document.getElementById('kpiCritical')) document.getElementById('kpiCritical').textContent = s.risk_distribution?.requiring_human_review?.toLocaleString() || '—';
+            if(document.getElementById('kpiAnomalies')) document.getElementById('kpiAnomalies').textContent = s.anomalies_detected || '—';
+            if(document.getElementById('kpiHosp')) document.getElementById('kpiHosp').textContent = s.hospitalized?.toLocaleString() || '—';
+        }
+
+        // ================================================================
+        // OVERVIEW CHARTS
+        // ================================================================
+        async function loadOverviewCharts() {
+            // Monthly trends
+            const trends = await fetchJSON('/api/v1/prism/trends?granularity=monthly');
+            if (trends.series) {
+                const months = trends.series.map(d => d.month + "-01"); // Make it a valid ISO date
+                const counts = trends.series.map(d => Number(d.count));
+                const hosp = trends.series.map(d => Number(d.hospitalized));
+                Plotly.newPlot('overviewTrendChart', [
+                    { x: months, y: counts, type: 'scatter', mode: 'lines', name: 'Incidents',
+                      line: { color: '#3b82f6', width: 2 }, fill: 'tozeroy',
+                      fillcolor: 'rgba(59,130,246,0.1)' },
+                    { x: months, y: hosp, type: 'scatter', mode: 'lines', name: 'Hospitalizations',
+                      line: { color: '#ef4444', width: 2, dash: 'dot' } },
+                ], { ...getPlotlyDark(), showlegend: false, xaxis: { ...getPlotlyDark().xaxis, type: 'date', title: 'Month' }, yaxis: { ...getPlotlyDark().yaxis, type: 'linear', title: 'Count' } }, PLOTLY_CFG);
+            }
+
+            // Risk distribution
+            const dist = statsData.risk_distribution;
+            if (dist?.histogram) {
+                const colors = dist.histogram.bins.map((_, i) => {
+                    if (i >= 7) return '#ef4444';
+                    if (i >= 5) return '#f59e0b';
+                    if (i >= 3) return '#3b82f6';
+                    return '#10b981';
+                });
+                Plotly.newPlot('overviewRiskChart', [{
+                    x: dist.histogram.bins.map(String), y: dist.histogram.counts.map(Number),
+                    type: 'bar', marker: { color: colors, opacity: 0.85 },
+                }], { ...getPlotlyDark(), xaxis: { ...getPlotlyDark().xaxis, type: 'category', title: 'Risk Score Range' },
+                      yaxis: { ...getPlotlyDark().yaxis, type: 'linear', title: 'Count' } }, PLOTLY_CFG);
+            }
+
+            // SIF categories
+            const sif = statsData.sif_summary;
+            if (sif?.by_category) {
+                const cats = Object.keys(sif.by_category).map(c => c.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
+                const vals = Object.values(sif.by_category);
+                Plotly.newPlot('overviewSIFChart', [{
+                    labels: cats, values: vals, type: 'pie', hole: 0.55,
+                    marker: { colors: ['#3b82f6', '#8b5cf6', '#06b6d4', '#ec4899', '#10b981'] },
+                    textinfo: 'percent', textposition: 'inside', textfont: { size: 12, color: '#f1f5f9', family: 'Inter', weight: 'bold' },
+                }], { ...getPlotlyDark(), showlegend: false, margin: { t: 10, b: 10, l: 10, r: 10 } }, PLOTLY_CFG);
+            }
+
+            // Top states
+            if (statsData.top_states) {
+                const states = Object.keys(statsData.top_states).slice(0, 10);
+                const counts = Object.values(statsData.top_states).slice(0, 10);
+                Plotly.newPlot('overviewStateChart', [{
+                    y: states.reverse(), x: counts.reverse(), type: 'bar', orientation: 'h',
+                    marker: { color: counts.map((_, i) => `hsl(${220 + i * 12}, 70%, ${55 + i * 3}%)`) },
+                }], { ...getPlotlyDark(), margin: { ...getPlotlyDark().margin, l: 120 } }, PLOTLY_CFG);
+            }
+        }
+
+        // ================================================================
+        // PRISM
+        // ================================================================
+        async function loadPRISM() {
+            // Daily chart with anomalies
+            const daily = await fetchJSON('/api/v1/prism/trends?granularity=daily');
+            const anomalies = await fetchJSON('/api/v1/prism/anomalies?limit=100');
+
+            if (daily.series) {
+                const dates = daily.series.map(d => String(d.date));
+                const counts = daily.series.map(d => Number(d.count));
+                const rolling7 = daily.series.map(d => Number(d.rolling_7d));
+                const rolling30 = daily.series.map(d => Number(d.rolling_30d));
+
+                const traces = [
+                    { x: dates, y: counts, type: 'scatter', mode: 'markers', name: 'Daily Count',
+                      marker: { color: 'rgba(59,130,246,0.3)', size: 4 } },
+                    { x: dates, y: rolling7, type: 'scatter', mode: 'lines', name: '7-day Avg',
+                      line: { color: '#3b82f6', width: 2 } },
+                    { x: dates, y: rolling30, type: 'scatter', mode: 'lines', name: '30-day Baseline',
+                      line: { color: '#10b981', width: 2, dash: 'dash' } },
+                ];
+
+                if (anomalies.anomalies && anomalies.anomalies.length) {
+                    const minDate = dates[0];
+                    const recentAnomalies = anomalies.anomalies.filter(a => a.date >= minDate);
+                    const aDates = recentAnomalies.map(a => a.date);
+                    const aCounts = recentAnomalies.map(a => a.count);
+                    traces.push({
+                        x: aDates, y: aCounts, type: 'scatter', mode: 'markers',
+                        name: 'Anomalies', marker: { color: '#ef4444', size: 10, symbol: 'diamond',
+                        line: { color: '#ef4444', width: 2 } },
+                    });
+                }
+
+                Plotly.newPlot('prismDailyChart', traces,
+                    { ...getPlotlyDark(), showlegend: false, xaxis: { ...getPlotlyDark().xaxis, type: 'date', title: 'Date' },
+                      yaxis: { ...getPlotlyDark().yaxis, type: 'linear', title: 'Incidents/Day' } }, PLOTLY_CFG);
+            }
+
+            // Forecast
+            const forecast = await fetchJSON('/api/v1/prism/forecast');
+            if (forecast['30d']) {
+                const f30 = forecast['30d'];
+                const fDates = f30.daily_forecasts.map(d => d.date);
+                const fValues = f30.daily_forecasts.map(d => d.value);
+                Plotly.newPlot('prismForecastChart', [{
+                    x: fDates, y: fValues, type: 'scatter', mode: 'lines+markers',
+                    line: { color: '#8b5cf6', width: 2 }, marker: { size: 4 },
+                    fill: 'tozeroy', fillcolor: 'rgba(139,92,246,0.1)', name: '30-day Forecast',
+                }], getPlotlyDark(), PLOTLY_CFG);
+
+                let summary = '';
+                for (const [key, val] of Object.entries(forecast)) {
+                    summary += `<span class="text-secondary font-bold">${val.horizon_days}-day projected:</span> <span class="text-white font-semibold">~${val.mean_daily_incidents} incidents/day</span> &nbsp;&bull;&nbsp; <span class="text-tertiary font-bold">Trend:</span> <span class="text-white font-semibold">${val.trend.charAt(0).toUpperCase() + val.trend.slice(1)}</span> &nbsp;&bull;&nbsp; <span class="text-primary font-bold">Expected:</span> <span class="text-white font-semibold">${val.total_expected}</span><br>`;
+                }
+                if(document.getElementById('forecastSummary')) document.getElementById('forecastSummary').innerHTML = summary;
+            }
+
+            // Anomaly table
+            if (anomalies.anomalies && anomalies.anomalies.length > 0) {
+                window.allAnomalies = anomalies.anomalies;
+                window.currentAnomalyPage = 1;
+                window.anomaliesPerPage = 6;
+                window.changeAnomalyPage = function(delta) {
+                    const totalPages = Math.ceil(window.allAnomalies.length / window.anomaliesPerPage);
+                    window.currentAnomalyPage += delta;
+                    if (window.currentAnomalyPage < 1) window.currentAnomalyPage = 1;
+                    if (window.currentAnomalyPage > totalPages) window.currentAnomalyPage = totalPages;
+                    renderAnomalyTable();
+                };
+                window.renderAnomalyTable = function() {
+                    const totalPages = Math.ceil(window.allAnomalies.length / window.anomaliesPerPage);
+                    const startIdx = (window.currentAnomalyPage - 1) * window.anomaliesPerPage;
+                    const pageData = window.allAnomalies.slice(startIdx, startIdx + window.anomaliesPerPage);
+                    
+                    let html = '';
+                    for (const a of pageData) {
+                        const isPos = a.deviation_pct > 0;
+                        const colorClass = isPos ? 'error' : 'tertiary';
+                        const sign = isPos ? '+' : '';
+                        
+                        const safeBaseline = (a.baseline !== undefined && a.baseline !== null) ? Number(a.baseline).toFixed(1) : '0.0';
+                        const safeDev = (a.deviation_pct !== undefined && a.deviation_pct !== null) ? Number(a.deviation_pct).toFixed(1) : '0.0';
+                        const safeSeverity = (a.anomaly_score !== undefined && a.anomaly_score !== null) ? Number(a.anomaly_score).toFixed(3) : '0.000';
+                        const safeRootCluster = a.root_cluster || 'Unknown';
+                        const safeDate = a.date || 'Unknown';
+                        const safeCount = a.count || 0;
+                        
+                        html += `
+                        <tr class="hover:bg-surface-container-high/70 transition-colors group">
+                         <td class="py-space-xs px-space-md font-bold text-on-surface flex items-center gap-space-xs">
+                          <span class="w-1.5 h-1.5 rounded-full bg-${colorClass}"></span>
+                          <span>${safeDate}</span>
+                         </td>
+                         <td class="py-space-xs px-space-md text-right font-bold text-${colorClass}">${safeCount}</td>
+                         <td class="py-space-xs px-space-md text-right text-outline">${safeBaseline}</td>
+                         <td class="py-space-xs px-space-md text-right font-bold text-${colorClass}">${sign}${safeDev}%</td>
+                         <td class="py-space-xs px-space-md text-right">
+                          <span class="px-space-xs py-space-xxs rounded bg-${colorClass}-container text-${isPos ? 'error' : 'on-tertiary-container'} text-[10px] font-bold font-label-sm">${safeSeverity}</span>
+                         </td>
+                         <td class="py-space-xs px-space-md text-on-surface truncate max-w-[170px]" title="${safeRootCluster}">${safeRootCluster}</td>
+                         <td class="py-space-xs px-space-md text-center">
+                          <button onclick="openInspectModal('${safeDate}')" class="px-space-sm py-space-xxs rounded bg-surface-container-high group-hover:bg-primary group-hover:text-on-primary text-outline font-label-sm text-[10px] uppercase font-bold transition-all shadow-sm" type="button">Inspect</button>
+                         </td>
+                        </tr>`;
+                    }
+                    if(document.getElementById('anomalyTable')) {
+                        document.getElementById('anomalyTable').innerHTML = html;
+                        if(document.getElementById('anomalyPageIndicator')) {
+                            document.getElementById('anomalyPageIndicator').textContent = `${window.currentAnomalyPage} / ${totalPages || 1}`;
+                            document.getElementById('prevAnomalyBtn').disabled = (window.currentAnomalyPage <= 1);
+                            document.getElementById('nextAnomalyBtn').disabled = (window.currentAnomalyPage >= totalPages);
+                        }
+                    }
+                };
+                renderAnomalyTable();
+            }
+        }
+
+        // ================================================================
+        // SIF DETECTION (Updated for V2)
+        // ================================================================
+        async function runSIFDetection() {
+            const text = document.getElementById('sifInput').value.trim();
+            if (!text) return;
+            
+            const btn = document.getElementById('sifAnalyzeBtn');
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = '<span class="spinner" style="display:inline-block; width:16px; height:16px; border-width:2px; margin:0 8px -4px 0; vertical-align:middle;"></span> Analyzing...';
+            btn.disabled = true;
+
+            try {
+                // 1. Call the new Phase 3 V2 SIF NLP Engine
+            const res = await fetch('/api/v2/sif/detect', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ incident_id: "demo", narrative: text }),
+            });
+            const data = await res.json();
+
+            const resultEl = document.getElementById('sifResult');
+            resultEl.classList.add('visible');
+
+            // Score badge
+            const badge = document.getElementById('sifScoreBadge');
+            badge.className = `sif-score-badge severity-${data.severity_level}`;
+            const displayScore = (data.overall_score * 100).toFixed(1);
+            badge.innerHTML = `${data.is_sif_precursor ? '⚠️' : '✅'} Score: ${displayScore}/100 — ${data.severity_level.toUpperCase()}`;
+
+            // Categories
+            const catEl = document.getElementById('sifCategories');
+            catEl.innerHTML = '';
+            if (data.top_category) {
+                catEl.innerHTML = `<span class="category-tag">${data.top_category.replace(/_/g, ' ')} (${displayScore}%)</span>`;
+            }
+
+            // 2. Call the new Phase 4 V2 Explainability Service
+            try {
+                const expRes = await fetch('/api/v2/explanations/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        prediction_type: "risk_score", 
+                        components: {
+                            "precursor_contribution": data.overall_score * 0.15,
+                            "severity_contribution": data.overall_score * 0.40,
+                            "likelihood_contribution": 0.5,
+                            "exposure_contribution": 0.3
+                        }
+                    })
+                });
+                const expData = await expRes.json();
+                
+                let expHtml = `<strong>SHAP Proxy Explanation:</strong><br/>`;
+                if (expData.top_factors && expData.top_factors.length > 0) {
+                    expHtml += expData.top_factors.map(f => `• ${f.description}`).join('<br/>');
+                } else {
+                    expHtml += "No severe risk factors detected.";
+                }
+                if(document.getElementById('sifExplanation')) document.getElementById('sifExplanation').innerHTML = expHtml;
+            } catch (e) {
+                if(document.getElementById('sifExplanation')) document.getElementById('sifExplanation').textContent = 'Explanation service unavailable.';
+            }
+
+            // Entities
+            const entEl = document.getElementById('sifEntities');
+            entEl.innerHTML = '';
+            if (data.extracted_entities && Object.keys(data.extracted_entities).length) {
+                let html = '<div style="display:flex; flex-wrap:wrap; gap:0.4rem">';
+                Object.entries(data.extracted_entities).forEach(([type, vals]) => {
+                    vals.forEach(v => {
+                        html += `<span style="padding:0.2rem 0.5rem; border-radius:4px; font-size:0.72rem;
+                                  background:rgba(6,182,212,0.15); color:#06b6d4; border:1px solid rgba(6,182,212,0.2)">${type}: ${v}</span>`;
+                    });
+                });
+                html += '</div>';
+                entEl.innerHTML = html;
+            }
+            } finally {
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+            }
+        }
+
+        async function loadSIFSummary() {
+            const sif = statsData.sif_summary;
+            if (!sif) return;
+
+            if(document.getElementById('sifAnalyzedCount')) document.getElementById('sifAnalyzedCount').textContent = `${sif.total_analyzed?.toLocaleString()} narratives analyzed`;
+
+            // Category bar chart
+            if (sif.by_category) {
+                const cats = Object.keys(sif.by_category).map(c => c.replace(/_/g, ' '));
+                const vals = Object.values(sif.by_category);
+                Plotly.newPlot('sifSummaryChart', [{
+                    x: vals, y: cats, type: 'bar', orientation: 'h',
+                    marker: { color: ['#3b82f6', '#8b5cf6', '#06b6d4', '#ec4899', '#10b981'] },
+                }], { ...getPlotlyDark(), margin: { ...getPlotlyDark().margin, l: 140 } }, PLOTLY_CFG);
+            }
+
+            // Severity pie
+            if (sif.severity_distribution) {
+                const labels = Object.keys(sif.severity_distribution).map(s => s.charAt(0).toUpperCase() + s.slice(1));
+                const values = Object.values(sif.severity_distribution);
+                Plotly.newPlot('sifSeverityChart', [{
+                    labels, values, type: 'pie', hole: 0.55,
+                    marker: { colors: ['#ef4444', '#f59e0b', '#3b82f6', '#10b981'] },
+                    textinfo: 'percent', textposition: 'inside', textfont: { size: 12, color: '#f1f5f9', family: 'Inter', weight: 'bold' },
+                }], { ...getPlotlyDark(), showlegend: false, margin: { t: 10, b: 10, l: 10, r: 10 } }, PLOTLY_CFG);
+            }
+        }
+
+        // ================================================================
+        // RISK
+        // ================================================================
+                function renderRiskTable(page) {
+            const pageSize = 10;
+            const total = window.allRiskRankings.length;
+            const totalPages = Math.ceil(total / pageSize);
+            
+            const startIdx = (page - 1) * pageSize;
+            const endIdx = Math.min(startIdx + pageSize, total);
+            const pageData = window.allRiskRankings.slice(startIdx, endIdx);
+            
+            const tbody = document.getElementById('tableBody');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            
+            pageData.forEach((r, idx) => {
+                let colorBase = 'tertiary'; // Moderate
+                let badgeClass = 'bg-surface-container-highest text-primary';
+                
+                if (r.risk_level === 'critical') {
+                    colorBase = 'error';
+                    badgeClass = 'bg-error-container text-error';
+                } else if (r.risk_level === 'high') {
+                    colorBase = 'tertiary'; // The original mockup used a purple color, let's stick to tertiary
+                    badgeClass = 'bg-surface-container-highest text-tertiary';
+                }
+
+                const rankStr = '#' + String(r.rank).padStart(2, '0');
+                
+                tbody.innerHTML += `<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer" onclick="openDossierModal('${rankStr}', '${r.state} - Incident', ${r.risk_score})">
+                    <td class="px-space-md py-space-xs font-telemetry-sm text-telemetry-sm font-bold text-${colorBase}">${rankStr}</td>
+                    <td class="px-space-md py-space-xs">
+                        <div class="flex items-center gap-space-xs">
+                            <span class="font-telemetry-lg text-telemetry-lg font-bold text-${colorBase}">${r.risk_score}</span>
+                            <div class="w-16 h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+                                <div class="h-full bg-${colorBase} rounded-full" style="width: ${r.risk_score}%;"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-space-md py-space-xs">
+                        <span class="inline-flex items-center px-space-xs py-0.5 rounded ${badgeClass} font-label-sm text-[10px] font-bold">${r.risk_level.toUpperCase()}</span>
+                    </td>
+                    <td class="px-space-md py-space-xs font-telemetry-sm text-telemetry-sm text-on-surface-variant">${r.event_date}</td>
+                    <td class="px-space-md py-space-xs font-medium text-on-surface">${r.state} • Site</td>
+                    <td class="px-space-md py-space-xs text-on-surface-variant">${r.event_type}</td>
+                    <td class="px-space-md py-space-xs text-${colorBase} font-medium">${r.nature}</td>
+                    <td class="px-space-md py-space-xs">
+                        <span class="inline-flex items-center gap-space-xs text-${colorBase} font-label-sm text-label-sm font-semibold">
+                            <span class="h-2 w-2 rounded-full bg-${colorBase} ${r.requires_review ? 'animate-pulse' : ''}"></span>
+                            ${r.requires_review ? 'Required - Overdue' : 'Reviewed'}
+                        </span>
+                    </td>
+                    <td class="px-space-md py-space-xs text-right">
+                        <button aria-label="Inspect Dossier" class="p-1 rounded bg-surface-container text-on-surface-variant group-hover:bg-primary group-hover:text-on-primary transition-all">
+                            <span class="material-symbols-outlined text-[16px]">visibility</span>
+                        </button>
+                    </td>
+                </tr>`;
+            });
+            
+            const showingText = document.getElementById('riskShowingText');
+            if(showingText) showingText.innerText = `SHOWING ${startIdx + 1}-${endIdx} OF ${total} HIGH-RISK INCIDENTS`;
+            
+            const pag = document.getElementById('riskPagination');
+            if(!pag) return;
+            pag.innerHTML = '';
+            
+            if (totalPages <= 1) return;
+            
+            if (page > 1) {
+                pag.innerHTML += `<button onclick="renderRiskTable(${page - 1})" class="px-space-sm py-1 bg-surface-container rounded text-on-surface-variant hover:text-on-surface">PREV</button>`;
+            } else {
+                pag.innerHTML += `<button disabled class="px-space-sm py-1 bg-surface-container rounded text-on-surface-variant/50 cursor-not-allowed">PREV</button>`;
+            }
+            
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === page) {
+                    pag.innerHTML += `<span class="px-space-sm py-1 bg-primary text-on-primary rounded font-bold">${i}</span>`;
+                } else {
+                    pag.innerHTML += `<button onclick="renderRiskTable(${i})" class="px-space-sm py-1 bg-surface-container rounded text-on-surface-variant hover:text-on-surface">${i}</button>`;
+                }
+            }
+            
+            if (page < totalPages) {
+                pag.innerHTML += `<button onclick="renderRiskTable(${page + 1})" class="px-space-sm py-1 bg-surface-container rounded text-on-surface-variant hover:text-on-surface">NEXT</button>`;
+            } else {
+                pag.innerHTML += `<button disabled class="px-space-sm py-1 bg-surface-container rounded text-on-surface-variant/50 cursor-not-allowed">NEXT</button>`;
+            }
+        }
+
+
+async function loadRisk() {
+            try {
+                const rankings = await fetchJSON('/api/v1/risk/rankings?limit=20');
+                const heatmap = await fetchJSON('/api/v1/risk/heatmap');
+
+                window.allRiskRankings = rankings.rankings || [];
+                renderRiskTable(1);
+
+            // Heatmap
+            if (heatmap.by_state) {
+                const states = heatmap.by_state.map(s => s.State);
+                const avgRisk = heatmap.by_state.map(s => s.avg_risk);
+                Plotly.newPlot('riskHeatmapChart', [{
+                    y: states.slice(0, 15).reverse(), x: avgRisk.slice(0, 15).reverse(),
+                    type: 'bar', orientation: 'h',
+                    marker: { color: avgRisk.slice(0, 15).reverse(),
+                              colorscale: [[0, '#10b981'], [0.5, '#f59e0b'], [1, '#ef4444']] },
+                }], { ...getPlotlyDark(), margin: { ...getPlotlyDark().margin, l: 130 },
+                      xaxis: { ...getPlotlyDark().xaxis, title: 'Avg Risk Score' } }, PLOTLY_CFG);
+            }
+
+            // Level breakdown
+            const dist = statsData.risk_distribution;
+            if (dist?.level_counts) {
+                const levels = ['critical', 'high', 'moderate', 'low'];
+                const colors = ['#ef4444', '#f59e0b', '#3b82f6', '#10b981'];
+                const vals = levels.map(l => dist.level_counts[l] || 0);
+                Plotly.newPlot('riskLevelChart', [{
+                    labels: levels.map(l => l.charAt(0).toUpperCase() + l.slice(1)),
+                    values: vals, type: 'pie', hole: 0.55,
+                    marker: { colors },
+                    textinfo: 'value', textposition: 'inside', textfont: { size: 12, color: '#f1f5f9', family: 'Inter', weight: 'bold' },
+                }], { ...getPlotlyDark(), showlegend: false, margin: { t: 10, b: 10, l: 10, r: 10 } }, PLOTLY_CFG);
+            }
+            } catch(e) { console.error("loadRisk error", e); }
+        }
+
+        // ================================================================
+        // INCIDENTS
+        // ================================================================
+        async function loadIncidents(page = 1) {
+            currentPage = page;
+            const search = document.getElementById('incidentSearch').value;
+            const level = document.getElementById('incidentFilter').value;
+            let url = `/api/v1/incidents?page=${page}&per_page=25`;
+            if (search) url += `&search=${encodeURIComponent(search)}`;
+            if (level) url += `&risk_level=${level}`;
+
+            const data = await fetchJSON(url);
+            const tbody = document.getElementById('incidentTableBody');
+            tbody.innerHTML = '';
+
+            (data.incidents || []).forEach(r => {
+                tbody.innerHTML += `<tr>
+                    <td>${r.id}</td>
+                    <td><strong>${r.risk_score}</strong></td>
+                    <td><span class="risk-pill ${r.risk_level}">${r.risk_level}</span></td>
+                    <td>${r.event_date}</td>
+                    <td>${r.state}</td>
+                    <td style="max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">${r.employer}</td>
+                    <td style="max-width:350px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:0.78rem; color:var(--text-secondary)">${r.narrative}</td>
+                </tr>`;
+            });
+
+            // Pagination
+            const pagEl = document.getElementById('pagination');
+            pagEl.innerHTML = '';
+            if (data.total_pages > 1) {
+                for (let i = Math.max(1, page - 3); i <= Math.min(data.total_pages, page + 3); i++) {
+                    pagEl.innerHTML += `<button onclick="loadIncidents(${i})"
+                        style="padding:0.3rem 0.7rem; border-radius:6px; border:1px solid var(--border-glass);
+                               background:${i === page ? 'var(--accent-blue)' : 'transparent'}; color:var(--text-primary);
+                               cursor:pointer; font-size:0.8rem">${i}</button>`;
+                }
+            }
+        }
+
+        // ================================================================
+        // GOVERNANCE SECTION (Phase 5)
+        // ================================================================
+        async function loadGovernance() {
+            try {
+                // Fetch Fairness Metrics
+                const fairnessRes = await fetchJSON('/api/v1/governance/fairness-metrics');
+                if (fairnessRes.status !== 'no_data') {
+                    const tbody = document.getElementById('fairnessTableBody');
+                    tbody.innerHTML = fairnessRes.group_metrics.map(g => {
+                        const isAlert = g.is_disproportionate;
+                        const statusColor = isAlert ? 'var(--accent-red)' : 'var(--accent-green)';
+                        return `
+                            <tr>
+                                <td><strong>${g.group}</strong></td>
+                                <td>${g.mean_risk_score}</td>
+                                <td style="color:${isAlert ? 'var(--accent-red)' : ''}">${(g.disparity_ratio * 100).toFixed(1)}%</td>
+                                <td><span class="risk-pill" style="background:transparent; border:1px solid ${statusColor}; color:${statusColor}">${isAlert ? 'Disparity Alert' : 'Balanced'}</span></td>
+                            </tr>
+                        `;
+                    }).join('');
+
+                    if (fairnessRes.alerts && fairnessRes.alerts.length > 0) {
+                        const alertDiv = document.getElementById('fairnessAlerts');
+                        alertDiv.innerHTML = fairnessRes.alerts.map(a => `
+                            <div style="padding:1rem; margin-bottom:1rem; border-radius:8px; border:1px solid rgba(239, 68, 68, 0.3); background:rgba(239, 68, 68, 0.1);">
+                                <strong style="color:var(--accent-red)">⚠️ ${a.severity.toUpperCase()} ALERT:</strong> <span style="color:var(--text-primary)">${a.message}</span>
+                            </div>
+                        `).join('');
+                    }
+                }
+
+                // Fetch Drift Metrics
+                const driftRes = await fetchJSON('/api/v1/governance/drift-metrics');
+                if(document.getElementById('driftMetric')) document.getElementById('driftMetric').textContent = driftRes.metric;
+                if(document.getElementById('driftBaseline')) document.getElementById('driftBaseline').textContent = (driftRes.baseline * 100).toFixed(1) + '%';
+                if(document.getElementById('driftCurrent')) document.getElementById('driftCurrent').textContent = (driftRes.current * 100).toFixed(1) + '%';
+                if(document.getElementById('driftMagnitude')) document.getElementById('driftMagnitude').textContent = 'Δ ' + (driftRes.drift_magnitude * 100).toFixed(1) + '%';
+                if(document.getElementById('driftAction')) document.getElementById('driftAction').textContent = driftRes.action_required;
+
+                if (driftRes.drift_detected) {
+                    document.getElementById('driftMagnitude').style.color = 'var(--accent-red)';
+                    if(document.getElementById('driftAlerts')) document.getElementById('driftAlerts').innerHTML = `
+                        <div style="padding:1rem; margin-bottom:1rem; border-radius:8px; border:1px solid rgba(245, 158, 11, 0.3); background:rgba(245, 158, 11, 0.1);">
+                            <strong style="color:var(--accent-amber)">⚠️ STATISTICAL DRIFT DETECTED</strong>
+                            <div style="font-size:0.85rem; margin-top:0.5rem; color:var(--text-secondary)">
+                                Model predictions have deviated from the baseline by more than the allowed threshold. Action required.
+                            </div>
+                        </div>
+                    `;
+                }
+
+            } catch (e) {
+                console.error("Failed to load governance metrics:", e);
+            }
+        }
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+<!-- Inspect Anomaly Modal -->
+<div id="inspectModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300" style="background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px);">
+    <div class="bg-slate-900 border border-slate-700/50 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden transform scale-95 transition-transform duration-300" id="inspectModalContent">
+        <div class="px-space-lg py-space-md border-b border-slate-700 flex justify-between items-center bg-slate-800">
+            <h3 class="font-headline-sm text-headline-sm font-bold text-white flex items-center gap-space-sm">
+                <span class="material-symbols-outlined text-indigo-400">analytics</span>
+                Anomaly Inspector
+            </h3>
+            <button onclick="closeInspectModal()" class="text-slate-400 hover:text-rose-400 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="p-space-lg flex flex-col gap-space-md font-body-md" id="inspectModalBody">
+            <!-- Content injected via JS -->
+        </div>
+        <div class="px-space-lg py-space-md border-t border-slate-700/50 bg-slate-950 flex justify-end gap-space-sm">
+            <button onclick="closeInspectModal()" class="px-space-md py-space-xs rounded bg-slate-700 hover:bg-slate-600 text-white font-label-md font-bold transition-colors">Dismiss</button>
+            <button onclick="alert('Ticket created successfully (Demo)')" class="px-space-md py-space-xs rounded bg-indigo-600 hover:bg-indigo-500 text-white font-label-md font-bold transition-colors shadow-sm flex items-center gap-space-xs">
+                <span class="material-symbols-outlined text-[18px]">add_task</span>
+                Create Ticket
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.openInspectModal = function(date) {
+        const anomaly = window.allAnomalies.find(a => a.date === date);
+        if (!anomaly) return;
+        
+        const isPos = anomaly.deviation_pct > 0;
+        const colorClass = isPos ? 'rose-400' : 'emerald-400';
+        const bgClass = isPos ? 'rose-500/20' : 'emerald-500/20';
+        const sign = isPos ? '+' : '';
+        
+        const bodyHtml = `
+            <div class="flex items-start justify-between">
+                <div>
+                    <div class="text-slate-400 text-label-md uppercase tracking-wider mb-1">Date Logged</div>
+                    <div class="text-white font-bold text-title-md">${anomaly.date}</div>
+                </div>
+                <div class="text-right">
+                    <div class="text-slate-400 text-label-md uppercase tracking-wider mb-1">Severity Score</div>
+                    <div class="text-${colorClass} font-bold text-title-md px-space-sm py-space-xxs bg-${bgClass} rounded">${Number(anomaly.anomaly_score || 0).toFixed(3)}</div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-space-md mt-space-sm">
+                <div class="bg-slate-800 p-space-md rounded-lg">
+                    <div class="text-slate-400 text-label-sm uppercase tracking-wider mb-1">Observed Count</div>
+                    <div class="text-white font-bold text-title-lg">${anomaly.count || 0}</div>
+                </div>
+                <div class="bg-slate-800 p-space-md rounded-lg">
+                    <div class="text-slate-400 text-label-sm uppercase tracking-wider mb-1">Expected Baseline</div>
+                    <div class="text-white font-bold text-title-lg">${Number(anomaly.baseline || 0).toFixed(1)}</div>
+                </div>
+            </div>
+            
+            <div class="mt-space-sm">
+                <div class="text-slate-400 text-label-md uppercase tracking-wider mb-1">Deviation</div>
+                <div class="text-${colorClass} font-bold text-headline-sm">${sign}${Number(anomaly.deviation_pct || 0).toFixed(1)}%</div>
+                <div class="text-slate-400 text-body-sm mt-1">This represents a ${isPos ? 'surge' : 'drop'} in expected feature vector behavior.</div>
+            </div>
+            
+            <div class="mt-space-sm pt-space-md border-t border-slate-700/50">
+                <div class="text-slate-400 text-label-md uppercase tracking-wider mb-2">Root Cause Analysis Cluster</div>
+                <div class="bg-slate-800 p-space-md rounded-lg border-l-4 border-${colorClass}">
+                    <div class="text-white font-bold flex items-center gap-space-sm">
+                        <span class="material-symbols-outlined text-${colorClass}">${isPos ? 'trending_up' : 'trending_down'}</span>
+                        ${anomaly.root_cluster || 'Unknown Pattern'}
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('inspectModalBody').innerHTML = bodyHtml;
+        const modal = document.getElementById('inspectModal');
+        const content = document.getElementById('inspectModalContent');
+        
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+    };
+    
+    window.closeInspectModal = function() {
+        const modal = document.getElementById('inspectModal');
+        const content = document.getElementById('inspectModalContent');
+        
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+    };
+</script>
+</body>
+</html>
