@@ -228,7 +228,7 @@ class RiskScoringEngine:
                                    (51,60),(61,70),(71,80),(81,90),(91,100)]
                 ],
             },
-            "requiring_human_review": int((scores > 70).sum()),
+            "requiring_human_review": int((self.risk_data['risk_level'] == 'critical').sum()),
         }
 
     def get_heatmap(self) -> dict:

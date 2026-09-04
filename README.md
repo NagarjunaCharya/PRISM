@@ -68,6 +68,8 @@ PRISM-SIF/
   - Historical patterns by employer/state
   - Hospitalization & amputation flags
 - Geographic risk heatmap by jurisdiction
+- **Mini Analytical Dashboard:** Interactive drill-downs for individual incidents showing exact risk component breakdown (Likelihood, Severity, Exposure, Precursor Strength).
+- **Dynamic Safety Tips:** Rule-based generation of actionable safety recommendations based on incident nature and event type.
 
 ### 4. Governance & AI Ethics
 - Model drift monitoring
@@ -125,6 +127,7 @@ Open `http://localhost:8001` in your browser.
 | `/api/v1/risk/distribution` | GET | Risk score distribution |
 | `/api/v1/risk/heatmap` | GET | Geographic risk heatmap |
 | `/api/v1/incidents` | GET | Paginated incident explorer |
+| `/api/v1/incidents/{id}` | GET | Detailed incident risk breakdown and safety tips |
 | `/api/v1/governance/*` | GET | AI governance metrics |
 
 ---

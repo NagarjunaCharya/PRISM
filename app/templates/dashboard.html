@@ -566,13 +566,13 @@
 </div>
 </div>
 <!-- Card 4: Critical Alerts -->
-<div class="relative overflow-hidden rounded-xl bg-surface-container/85 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md group hover:bg-surface-container-high transition-all">
+<div onclick="openCriticalAlertsModal()" class="relative overflow-hidden rounded-xl bg-surface-container/85 backdrop-blur-xl p-space-md flex flex-col justify-between shadow-md group hover:bg-surface-container-high transition-all cursor-pointer hover:ring-1 hover:ring-error">
 <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-error to-secondary"></div>
 <div class="flex items-center justify-between">
 <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Critical Alerts</span>
 <span class="material-symbols-outlined text-[16px] text-error animate-pulse">crisis_alert</span>
 </div>
-<div class="my-space-xs" id="kpiCritical">
+<div class="my-space-xs">
 <div class="font-telemetry-display text-telemetry-display text-on-surface tracking-tight font-bold bg-gradient-to-r from-error to-secondary-fixed bg-clip-text text-transparent" id="kpiCritical">2,618</div>
 </div>
 <div class="flex items-center justify-between text-on-surface-variant">
@@ -2903,6 +2903,339 @@ async function loadRisk() {
         content.classList.remove('scale-100');
         content.classList.add('scale-95');
     };
+</script>
+
+<!-- Critical Alerts Modal -->
+<div id="criticalAlertsModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="criticalAlertsContent" class="bg-surface-container/95 border border-outline/20 rounded-2xl w-11/12 max-w-5xl h-[85vh] flex flex-col shadow-2xl scale-95 transition-transform duration-300">
+        <!-- Header -->
+        <div class="flex items-center justify-between p-6 border-b border-outline/20">
+            <div>
+                <h2 class="text-2xl font-bold bg-gradient-to-r from-error to-secondary bg-clip-text text-transparent flex items-center gap-2">
+                    <span class="material-symbols-outlined text-error">crisis_alert</span>
+                    Critical Incident Reports
+                </h2>
+                <div class="text-outline text-sm mt-1" id="ca-loading-state">Loading...</div>
+            </div>
+            <button onclick="closeCriticalAlertsModal()" class="text-outline hover:text-white transition-colors bg-surface-container-high hover:bg-white/10 rounded-full p-2">
+                <span class="material-symbols-outlined block text-[24px]">close</span>
+            </button>
+        </div>
+        
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto p-6" id="ca-incidents-container">
+            <!-- Items injected here -->
+        </div>
+
+        <!-- Footer / Pagination -->
+        <div class="p-4 border-t border-outline/20 flex justify-center bg-surface-container-high/50 rounded-b-2xl hidden" id="ca-pagination-controls">
+            <button id="ca-btn-prev" class="px-4 py-2 border border-outline/50 rounded-l hover:bg-white/10 disabled:opacity-50 text-sm font-semibold transition-colors">Previous</button>
+            <span class="px-6 py-2 border-t border-b border-outline/50 flex items-center text-sm font-medium" id="ca-page-indicator">Page 1</span>
+            <button id="ca-btn-next" class="px-4 py-2 border border-outline/50 rounded-r hover:bg-white/10 disabled:opacity-50 text-sm font-semibold transition-colors">Next</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let caCurrentPage = 1;
+    const caPerPage = 50;
+
+    async function fetchCriticalIncidents(page) {
+        const container = document.getElementById('ca-incidents-container');
+        const loading = document.getElementById('ca-loading-state');
+        const pagination = document.getElementById('ca-pagination-controls');
+        
+        loading.textContent = 'Loading...';
+        
+        try {
+            const res = await fetch(`/api/v1/incidents?risk_level=critical&sort_by=date&page=${page}&per_page=${caPerPage}`);
+            const data = await res.json();
+            
+            container.innerHTML = '';
+            
+            if (!data.incidents || data.incidents.length === 0) {
+                container.innerHTML = '<div class="text-outline text-center py-10">No critical alerts found.</div>';
+                pagination.classList.add('hidden');
+            } else {
+                data.incidents.forEach(inc => {
+                    const dateStr = inc.event_date ? new Date(inc.event_date).toLocaleDateString() : 'Unknown Date';
+                    
+                    const card = document.createElement('div');
+                    card.className = 'bg-surface-container-high/80 backdrop-blur-md border border-outline/20 rounded-xl p-5 mb-4 hover:border-primary/50 hover:bg-surface-container-highest cursor-pointer transition-colors';
+                    card.setAttribute('onclick', `openIncidentDetailModal(${inc.id})`);
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <div class="flex items-center gap-3 mb-1">
+                                    <span class="bg-error/15 text-error border border-error/30 px-2 py-1 rounded-full text-xs font-bold tracking-wide flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[14px]">crisis_alert</span> CRITICAL
+                                    </span>
+                                    <span class="text-sm font-semibold text-outline">${dateStr}</span>
+                                    <span class="text-sm text-outline px-2 border-l border-outline/30">${inc.state} - ${inc.city}</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white mt-2">${inc.employer || 'Unknown Employer'}</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-black text-error">${inc.risk_score.toFixed(1)}</div>
+                                <div class="text-xs text-outline uppercase tracking-wider">Risk Score</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-2 mb-4 leading-relaxed">${inc.narrative}</p>
+                        <div class="flex gap-4 text-xs text-outline">
+                            <div class="flex gap-1 items-center">
+                                <span class="material-symbols-outlined text-[16px]">warning</span>
+                                ${inc.event_type || 'Unknown Event'}
+                            </div>
+                            <div class="flex gap-1 items-center">
+                                <span class="material-symbols-outlined text-[16px]">medical_services</span>
+                                ${inc.nature || 'Unknown Nature'}
+                            </div>
+                            ${inc.hospitalized ? '<div class="flex gap-1 items-center text-amber-400"><span class="material-symbols-outlined text-[16px]">local_hospital</span> Hospitalized</div>' : ''}
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+                
+                document.getElementById('ca-page-indicator').textContent = `Page ${data.page} of ${data.total_pages}`;
+                document.getElementById('ca-btn-prev').disabled = data.page <= 1;
+                document.getElementById('ca-btn-next').disabled = data.page >= data.total_pages;
+                pagination.classList.remove('hidden');
+            }
+            
+            loading.textContent = `Showing ${data.incidents.length} of ${data.total} critical alerts (Ordered newest to oldest)`;
+        } catch (err) {
+            console.error(err);
+            loading.textContent = 'Error loading alerts.';
+        }
+    }
+
+    document.getElementById('ca-btn-prev').addEventListener('click', () => {
+        if (caCurrentPage > 1) {
+            caCurrentPage--;
+            fetchCriticalIncidents(caCurrentPage);
+        }
+    });
+
+    document.getElementById('ca-btn-next').addEventListener('click', () => {
+        caCurrentPage++;
+        fetchCriticalIncidents(caCurrentPage);
+    });
+
+    window.openCriticalAlertsModal = function() {
+        const modal = document.getElementById('criticalAlertsModal');
+        const content = document.getElementById('criticalAlertsContent');
+        
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+        
+        caCurrentPage = 1;
+        fetchCriticalIncidents(caCurrentPage);
+    };
+
+    window.closeCriticalAlertsModal = function() {
+        const modal = document.getElementById('criticalAlertsModal');
+        const content = document.getElementById('criticalAlertsContent');
+        
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+    };
+</script>
+
+<!-- Mini Analytical Dashboard Modal -->
+<div id="incidentDetailModal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 backdrop-blur-lg opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="incidentDetailContent" class="bg-surface-container/95 border border-outline/20 rounded-2xl w-11/12 max-w-4xl h-[80vh] flex flex-col shadow-2xl scale-95 transition-transform duration-300">
+        <!-- Header -->
+        <div class="flex items-center justify-between p-6 border-b border-outline/20 bg-surface-container-high/50 rounded-t-2xl">
+            <div>
+                <h2 class="text-xl font-bold text-white flex items-center gap-2" id="idm-employer">
+                    Employer Name
+                </h2>
+                <div class="text-outline text-sm mt-1 flex items-center gap-4">
+                    <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">calendar_today</span><span id="idm-date"></span></span>
+                    <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span><span id="idm-location"></span></span>
+                    <span class="bg-error/15 text-error border border-error/30 px-2 py-0.5 rounded text-xs font-bold tracking-wide" id="idm-risk-level">CRITICAL</span>
+                </div>
+            </div>
+            <button onclick="closeIncidentDetailModal()" class="text-outline hover:text-white transition-colors bg-surface-container hover:bg-white/10 rounded-full p-2">
+                <span class="material-symbols-outlined block text-[24px]">close</span>
+            </button>
+        </div>
+        
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-6" id="idm-body">
+            <!-- Left Column: Summary -->
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-outline mb-2">Event Summary</h3>
+                    <div class="bg-surface-container-high p-4 rounded-xl border border-outline/10 text-sm text-gray-300 leading-relaxed" id="idm-narrative">
+                        <!-- Narrative -->
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-outline mb-2">Categorization</h3>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-sm text-on-surface"><span class="material-symbols-outlined text-outline text-[18px]">warning</span> <span id="idm-event-type"></span></div>
+                        <div class="flex items-center gap-2 text-sm text-on-surface"><span class="material-symbols-outlined text-outline text-[18px]">medical_services</span> <span id="idm-nature"></span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column: Analytics & Tips -->
+            <div class="space-y-6">
+                <!-- Analytics -->
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-outline">Risk Score Breakdown</h3>
+                        <div class="text-3xl font-black text-error" id="idm-risk-score">0.0</div>
+                    </div>
+                    
+                    <div class="bg-surface-container-high p-4 rounded-xl border border-outline/10 space-y-4">
+                        <!-- Likelihood Bar -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-on-surface-variant font-medium">Likelihood</span>
+                                <span class="text-white" id="idm-bar-lik-val">0.0/10</span>
+                            </div>
+                            <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-secondary transition-all duration-1000" id="idm-bar-lik" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <!-- Severity Bar -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-on-surface-variant font-medium">Severity</span>
+                                <span class="text-white" id="idm-bar-sev-val">0.0/10</span>
+                            </div>
+                            <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-error transition-all duration-1000" id="idm-bar-sev" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <!-- Exposure Bar -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-on-surface-variant font-medium">Exposure Frequency</span>
+                                <span class="text-white" id="idm-bar-exp-val">0.0/10</span>
+                            </div>
+                            <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-tertiary transition-all duration-1000" id="idm-bar-exp" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <!-- Precursor Bar -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-on-surface-variant font-medium">SIF Precursor Strength</span>
+                                <span class="text-white" id="idm-bar-pre-val">0.0/10</span>
+                            </div>
+                            <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+                                <div class="h-full bg-primary transition-all duration-1000" id="idm-bar-pre" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tips -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-outline mb-2">Actionable Safety Tips</h3>
+                    <div class="space-y-3" id="idm-tips">
+                        <!-- Tips injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function openIncidentDetailModal(id) {
+        const modal = document.getElementById('incidentDetailModal');
+        const content = document.getElementById('incidentDetailContent');
+        const body = document.getElementById('idm-body');
+        
+        // Reset bars to 0 for animation
+        document.getElementById('idm-bar-lik').style.width = '0%';
+        document.getElementById('idm-bar-sev').style.width = '0%';
+        document.getElementById('idm-bar-exp').style.width = '0%';
+        document.getElementById('idm-bar-pre').style.width = '0%';
+        
+        // Show modal
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+        
+        body.style.opacity = '0.5'; // loading state
+        
+        try {
+            const res = await fetch(`/api/v1/incidents/${id}`);
+            const data = await res.json();
+            
+            if (data.error) {
+                alert("Error: " + data.error);
+                closeIncidentDetailModal();
+                return;
+            }
+            
+            // Populate Data
+            document.getElementById('idm-employer').textContent = data.employer;
+            document.getElementById('idm-date').textContent = data.event_date ? new Date(data.event_date).toLocaleDateString() : 'Unknown';
+            document.getElementById('idm-location').textContent = `${data.city}, ${data.state}`;
+            document.getElementById('idm-risk-level').textContent = data.risk_level.toUpperCase();
+            
+            document.getElementById('idm-narrative').textContent = data.narrative;
+            document.getElementById('idm-event-type').textContent = data.event_type;
+            document.getElementById('idm-nature').textContent = data.nature;
+            document.getElementById('idm-risk-score').textContent = data.risk_score.toFixed(1);
+            
+            // Animate Bars (after slight delay to ensure DOM update)
+            setTimeout(() => {
+                const comp = data.components;
+                document.getElementById('idm-bar-lik').style.width = (comp.likelihood * 10) + '%';
+                document.getElementById('idm-bar-lik-val').textContent = comp.likelihood.toFixed(1) + '/10';
+                
+                document.getElementById('idm-bar-sev').style.width = (comp.severity * 10) + '%';
+                document.getElementById('idm-bar-sev-val').textContent = comp.severity.toFixed(1) + '/10';
+                
+                document.getElementById('idm-bar-exp').style.width = (comp.exposure * 10) + '%';
+                document.getElementById('idm-bar-exp-val').textContent = comp.exposure.toFixed(1) + '/10';
+                
+                document.getElementById('idm-bar-pre').style.width = (comp.precursor * 10) + '%';
+                document.getElementById('idm-bar-pre-val').textContent = comp.precursor.toFixed(1) + '/10';
+            }, 100);
+            
+            // Populate Tips
+            const tipsContainer = document.getElementById('idm-tips');
+            tipsContainer.innerHTML = '';
+            data.tips.forEach(tip => {
+                tipsContainer.innerHTML += `
+                    <div class="flex gap-3 bg-surface-container-lowest p-3 rounded-xl border border-outline/10">
+                        <div class="mt-0.5">
+                            <span class="material-symbols-outlined text-tertiary text-[20px]">${tip.icon}</span>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white mb-0.5">${tip.title}</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">${tip.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            body.style.opacity = '1';
+        } catch (err) {
+            console.error(err);
+            body.style.opacity = '1';
+        }
+    }
+
+    function closeIncidentDetailModal() {
+        const modal = document.getElementById('incidentDetailModal');
+        const content = document.getElementById('incidentDetailContent');
+        
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+    }
 </script>
 </body>
 </html>

@@ -237,6 +237,18 @@ async def get_heatmap():
     return risk_engine.get_heatmap()
 
 
+@app.get("/critical-alerts", response_class=HTMLResponse)
+async def critical_alerts():
+    """Serve the critical alerts page."""
+    template_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "templates", "critical_alerts.html"
+    )
+    with open(template_path, 'r', encoding='utf-8') as f:
+        html = f.read()
+    return HTMLResponse(content=html)
+
+
 # --- Incidents ---
 @app.get("/api/v1/incidents")
 async def get_incidents(
@@ -245,6 +257,7 @@ async def get_incidents(
     state: Optional[str] = None,
     risk_level: Optional[str] = None,
     search: Optional[str] = None,
+    sort_by: Optional[str] = Query("risk_score", enum=["risk_score", "date"])
 ):
     """Paginated incident list with risk scores."""
     if DATA.get("scored_df") is None:
@@ -262,7 +275,13 @@ async def get_incidents(
         df = df[mask]
 
     total = len(df)
-    df = df.sort_values('risk_score', ascending=False)
+    
+    if sort_by == "date":
+        # Convert to datetime and sort descending
+        df['EventDate'] = pd.to_datetime(df['EventDate'], errors='coerce')
+        df = df.sort_values('EventDate', ascending=False)
+    else:
+        df = df.sort_values('risk_score', ascending=False)
 
     start = (page - 1) * per_page
     end = start + per_page
@@ -292,6 +311,74 @@ async def get_incidents(
         "per_page": per_page,
         "total_pages": (total + per_page - 1) // per_page,
     }
+
+@app.get("/api/v1/incidents/{incident_id}")
+async def get_incident_detail(incident_id: int):
+    """Get detailed information for a single incident."""
+    if DATA.get("scored_df") is None:
+        return {"error": "Data not loaded"}
+
+    df = DATA["scored_df"]
+    # Safely convert IDs to int64 for comparison (to prevent 32-bit overflow on Windows)
+    numeric_ids = pd.to_numeric(df['ID'], errors='coerce').fillna(0).astype('int64')
+    row = df[numeric_ids == incident_id]
+
+    if row.empty:
+        return {"error": "Incident not found"}
+
+    row = row.iloc[0]
+    
+    # Generate simple rule-based tips
+    event_title = str(row.get('EventTitle', '')).lower()
+    nature_title = str(row.get('NatureTitle', '')).lower()
+    combined_text = event_title + " " + nature_title
+    
+    if 'fall' in combined_text:
+        tips = [
+            {"title": "Fall Protection", "desc": "Ensure personal fall arrest systems are inspected and used correctly above 4 feet.", "icon": "personal_injury"},
+            {"title": "Guardrails", "desc": "Verify guardrails and toeboards on all elevated working surfaces.", "icon": "fence"}
+        ]
+    elif 'caught' in combined_text or 'amputation' in combined_text:
+        tips = [
+            {"title": "Lockout/Tagout", "desc": "Implement and verify strict LOTO procedures before any maintenance.", "icon": "lock"},
+            {"title": "Machine Guarding", "desc": "Ensure all machine guards are firmly secured and interlocks are functioning.", "icon": "shield"}
+        ]
+    elif 'struck' in combined_text:
+        tips = [
+            {"title": "Traffic Control", "desc": "Establish clear physical barriers between pedestrian and vehicle/machinery traffic.", "icon": "traffic"},
+            {"title": "Visibility", "desc": "Require high-visibility PPE and proper lighting for all floor personnel.", "icon": "visibility"}
+        ]
+    elif 'exposure' in combined_text or 'burn' in combined_text:
+        tips = [
+            {"title": "PPE Verification", "desc": "Review SDS and verify that specialized chemical or thermal PPE is utilized.", "icon": "masks"},
+            {"title": "Ventilation", "desc": "Confirm industrial ventilation systems are functioning adequately in the area.", "icon": "air"}
+        ]
+    else:
+        tips = [
+            {"title": "Job Safety Analysis", "desc": "Conduct a comprehensive JSA before resuming similar tasks.", "icon": "assignment"},
+            {"title": "Refresher Training", "desc": "Ensure all involved employees have completed recent safety refresher training.", "icon": "school"}
+        ]
+
+    detail = {
+        "id": int(row.get('ID', 0)),
+        "event_date": str(row.get('EventDate', '')),
+        "employer": str(row.get('Employer', 'Unknown')),
+        "state": str(row.get('State', '')),
+        "city": str(row.get('City', '')),
+        "narrative": str(row.get('Final Narrative', '')),
+        "event_type": str(row.get('EventTitle', 'Unknown')),
+        "nature": str(row.get('NatureTitle', 'Unknown')),
+        "risk_score": float(row.get('risk_score', 0)),
+        "risk_level": str(row.get('risk_level', 'low')),
+        "components": {
+            "likelihood": float(row.get('likelihood', 4.0)),
+            "severity": float(row.get('severity', 3.0)),
+            "precursor": float(row.get('precursor_strength', 0.0)),
+            "exposure": 5.0 # default from risk_scorer.py
+        },
+        "tips": tips
+    }
+    return detail
 
 
 # =============================================================================
