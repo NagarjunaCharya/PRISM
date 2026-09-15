@@ -134,4 +134,4 @@ Open `http://localhost:8001` in your browser.
 
 ## 📄 License
 
-This project is for academic and research purposes as part of the SIIH 2026 competition.
+This project is for academic and research purposes as part of the SIIH 2026 competitions.
